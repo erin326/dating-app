@@ -17,7 +17,7 @@ import MessageForm from '../pages/MessageForm'
 function App() {
 
   const [user, setUser] = useState(null);
-  const [selectedUser, setSelectedUser] = useState({});
+  // const [selectedUser, setSelectedUser] = useState({});
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
@@ -30,19 +30,21 @@ function App() {
 
   if(!user) return <Login onLogin={setUser} />;
 
-  function selectUser(userObj) {
-    setSelectedUser(userObj);
-    console.log(userObj);
-  }
+  // function selectUser(userObj) {
+  //   setSelectedUser(userObj);
+  //   console.log(userObj);
+  // }
 
   return (
     <div className="App">
       <NavBar user={user} setUser={setUser} />
       <main>
         <Routes>
-          <Route exact path= '/settings' element={<AccountSettings user={user} onSelectUser={selectUser} 
-          selectedUser={selectedUser}
-          setSelectedUser={setSelectedUser} />} ></Route>
+          <Route exact path= '/settings' element={<AccountSettings user={user}
+          //  onSelectUser={selectUser} 
+          // selectedUser={selectedUser}
+          // setSelectedUser={setSelectedUser} 
+          />} ></Route>
           <Route exact path ='/browse' element={<Browse user={user} />}></Route>
           <Route exact path='/matches' element={<Matches user={user} />} >
           </Route>

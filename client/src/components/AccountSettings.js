@@ -2,7 +2,9 @@ import {useState, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom'
 
 
-function AccountSettings({user, selectedUser, onSelectUser, setSelectedUser}) {
+function AccountSettings({user, 
+    // selectedUser, onSelectUser, setSelectedUser
+}) {
 
     const [gender, setGender] = useState('');
     const [bio, setBio] = useState('');
@@ -14,15 +16,15 @@ function AccountSettings({user, selectedUser, onSelectUser, setSelectedUser}) {
 
     const navigate = useNavigate();
 
-    useEffect(() => {
-        setUserId(selectedUser.id)
-        // setUserName(selectedUser.username)
-        setAge(selectedUser.age)
-        setBio(selectedUser.bio)
-        setGender(selectedUser.gender)
-        setGenderInterest(selectedUser.gender_interest)
+    // useEffect(() => {
+    //     setUserId(selectedUser.id)
+    //     // setUserName(selectedUser.username)
+    //     setAge(selectedUser.age)
+    //     setBio(selectedUser.bio)
+    //     setGender(selectedUser.gender)
+    //     setGenderInterest(selectedUser.gender_interest)
        
-      }, [selectedUser]);
+    //   }, [selectedUser]);
 
 
     

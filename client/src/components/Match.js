@@ -25,7 +25,7 @@ function Match({match, user}) {
             </Card.Meta>
             <Card.Description>
             {match.bio}
-            {/* <Widget /> */}
+            <Widget />
             </Card.Description>
             {/* <Link to='/message'>Message</Link> */}
             {/* <MessageForm match={match} user={user} /> */}

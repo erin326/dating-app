@@ -1,4 +1,4 @@
-class ConversationsController < ApplicationController
+class Api::ConversationsController < ApplicationController
 
     def create 
         current_user = User.find_by(id: session[:user_id])
