@@ -12,11 +12,9 @@ function MatchList({match, user}) {
 
     const [showInfo, setShowInfo] = useState(false);
     const [selectedMatch, setSelectedMatch] = useState({});
-
-    const [selectedChat, setSelectedChat] = useState({});
     const [convos, setConvos] = useState([]);
-    const [conversation, setConversation] = useState({});
-    const [messages, setMessages] = useState([]);
+    
+  
   
     useEffect(() => {
         fetch(`api/conversations`)

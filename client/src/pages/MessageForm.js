@@ -3,7 +3,7 @@ import MessageList from '../components/MessageList';
 import {useEffect, useState} from 'react';
 
 
-function MessageForm({user, match, conversation, getMatch }) {
+function MessageForm({user, match, selectedMatch, conversation, getMatch }) {
 
 
     // console.log(user)
@@ -18,23 +18,23 @@ function MessageForm({user, match, conversation, getMatch }) {
     
 
     
-    // useEffect(() => {
-    //     if(!conversation) {
-    //     fetch(`api/conversations`, {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         },
-    //         body: JSON.stringify({recipient_id: match.id, user_id: user.id})
-    //     })
-    //     .then((r) => r.json())
-    //     .then((convos) => {
-    //         console.log(convos);
-    //         // setConvos(convos)
-    //     })
-    // }
+    useEffect(() => {
+        if(!conversation) {
+        fetch(`api/conversations`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({recipient_id: match.id, user_id: user.id})
+        })
+        .then((r) => r.json())
+        .then((convos) => {
+            console.log(convos);
+            // setConvos(convos)
+        })
+    }
 
-    // },[]);
+    },[]);
     // console.log(convos);
     // console.log(match);
 
@@ -77,18 +77,22 @@ function MessageForm({user, match, conversation, getMatch }) {
         e.preventDefault();
      
         // createConvo();
-        fetch(`api/conversations/${conversation.id}/messages`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({body: messageBody, user_id: user.id, conversation_id: conversation.id})
-        })
-        .then((r) => r.json())
-        .then((message) =>{
-            console.log(message)
+        if (conversation) {
+            fetch(`api/conversations/${conversation.id}/messages`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({body: messageBody, user_id: user.id, conversation_id: conversation.id})
+            })
+            .then((r) => r.json())
+            .then((message) =>{
+                console.log(message)
+    
+                 setMessage(message)})
 
-             setMessage(message)})
+        }
+    
 
 
     }
@@ -114,7 +118,7 @@ function MessageForm({user, match, conversation, getMatch }) {
            
           
         </form>
-        <MessageList user={user} match={match} message=
+        <MessageList user={user} match={match} selectedMatch={selectedMatch} message=
         {message} conversation={conversation} getMatch={getMatch}  />
      
        

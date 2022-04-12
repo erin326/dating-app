@@ -6,7 +6,7 @@ import MessageForm from '../pages/MessageForm'
 import {useState, useEffect} from 'react';
 
 
-function Match({user, selectedMatch, convos}) {
+function Match({user, selectedMatch, match, convos}) {
     // console.log(selectedMatch);
 
  
@@ -61,7 +61,7 @@ function Match({user, selectedMatch, convos}) {
                 </Card.Content>
                 <MessageForm
         //  getMatch={getThisMatch}
-          user={user} match={selectedMatch} conversation={conversation}  />
+          user={user} selectedMatch={selectedMatch} match={match} conversation={conversation}  />
 
            
                 {/* <button onClick={() => openConvo(selectedMatch)}>get convo</button> */}

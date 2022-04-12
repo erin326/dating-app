@@ -12,6 +12,7 @@ function MessageList({conversation, user, match}) {
             .then((c) => {
                 setMessages(c.messages)
                 console.log(messages);
+                console.log(con);
     
             })   
           

@@ -8,9 +8,9 @@ class Conversation < ApplicationRecord
 
     
 
-    # scope :between, -> (user_id, recipient_id) do 
-    #     where("(user_id = ? AND recipient_id = ?) OR (user_id = ? recipient_id = ?)", user_id, recipient_id)
-    # end
+    scope :between, -> (user_id, recipient_id) do 
+        where("(user_id = ? AND recipient_id = ?) OR (user_id = ? recipient_id = ?)", user_id, recipient_id)
+    end
     # depends who begins the conversation, need to assign who is the recipient and sender 
 
 end
