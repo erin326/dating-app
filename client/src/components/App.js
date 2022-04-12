@@ -8,6 +8,8 @@ import AccountSettings from './AccountSettings';
 import Browse from './Browse';
 import Matches from './Matches';
 import MessageForm from '../pages/MessageForm'
+import ConversationList from './ConversationList';
+// import Conversation from './Conversation';
 
 
 
@@ -15,6 +17,10 @@ import MessageForm from '../pages/MessageForm'
 // import './App.css';
 
 function App() {
+
+  require('react-dom');
+  window.React2 = require('react');
+  console.log(window.React1 === window.React2);
 
   const [user, setUser] = useState(null);
   // const [selectedUser, setSelectedUser] = useState({});
@@ -49,10 +55,12 @@ function App() {
           <Route exact path='/matches' element={<Matches user={user} />} >
           </Route>
           <Route exact path='/message' element={<MessageForm user={user} />}></Route>
+          <Route exact path ='/convos' element={<ConversationList user={user}/>}></Route> 
           <Route exact path='/' element={<UserHomePage user={user} setUser={setUser}/>}>
           </Route>
         </Routes>
       </main>
+      {/* <Conversation /> */}
 
     
     </div>

@@ -3,15 +3,16 @@ Rails.application.routes.draw do
   namespace :api do 
 
     resources :users, only: [:index, :update, :show]
-    resources :conversations do 
-      resources :messages
+    resources :conversations, only: [:create, :index, :show] do 
+      resources :messages, only: [:create, :index, :show]
     end
 
     get '/browse', to: 'browse#browse'
     post 'approve/:id', to: 'browse#approve'
     post 'decline/:id', to: 'browse#decline'
     get 'matches', to: 'browse#matches'
-    post '/conversation/:id', to: 'browse#conversation'
+    get 'match/:id', to: 'browse#show_match'
+    post '/open_conversation/:id', to: 'browse#open_conversation'
 
     post '/signup', to: 'users#create'
     get '/me', to: 'users#show'

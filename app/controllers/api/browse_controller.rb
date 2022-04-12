@@ -33,18 +33,29 @@ class Api::BrowseController < ApplicationController
         render json: matches
     end
 
-    def open_conversation
+    def show_match 
         current_user = User.find_by(id: session[:user_id])
-        @profile = User.find(params[:id])
-        likes = Like.where(user_id: current_user.id, liked_user_id: params[:id])
-        @match = likes.first if likes.size > 0
-        @conversation = Conversation.new 
-        message = @conversation.messages.build 
-
-        if @profile.present? 
-            render json: message
-        end
+        match = current_user.matches.find(params[:id])
+        render json: match
     end
+
+    # def open_conversation
+    #     current_user = User.find_by(id: session[:user_id])
+    #     profile = User.find(params[:id])
+    #     likes = Like.where(user_id: current_user.id, liked_user_id: params[:id])
+    #     match = likes.first if likes.size > 0
+    #     conversation = Conversation.create(conversation_params)
+    #     message = conversation.messages.build 
+
+    #     if profile.present? 
+    #         render json: message
+    #     end
+    # end
+
+    # private
+    # def conversation_params
+    #     params.permit(:sender_id, :recipient_id)
+    # end
 
 
 end

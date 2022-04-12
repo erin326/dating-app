@@ -32,6 +32,9 @@ function NavBar({user, setUser}) {
             <Link to='/matches' id='matches'>
             Matches</Link>
         </nav>
+        <nav>
+            <Link to ='/convos' >Chats</Link>
+        </nav>
 
          
         </>
