@@ -3,7 +3,7 @@ import MessageList from '../components/MessageList';
 import {useEffect, useState} from 'react';
 
 
-function MessageForm({user, match, conversation, getMatch, messages }) {
+function MessageForm({user, match, conversation, getMatch }) {
 
 
     // console.log(user)
@@ -11,29 +11,30 @@ function MessageForm({user, match, conversation, getMatch, messages }) {
     // const [conversation, setConversation] = useState({});
     const [messageBody, setMessageBody] = useState('');
     const [message, setMessage] = useState([]);
+    
     // const [selectedChat, setSelectedChat] = useState({});
     // const [convos, setConvos] = useState([]);
 
     
 
     
-    useEffect(() => {
-        if(!conversation) {
-        fetch(`api/conversations`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({recipient_id: match.id, user_id: user.id})
-        })
-        .then((r) => r.json())
-        .then((convos) => {
-            console.log(convos);
-            // setConvos(convos)
-        })
-    }
+    // useEffect(() => {
+    //     if(!conversation) {
+    //     fetch(`api/conversations`, {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         },
+    //         body: JSON.stringify({recipient_id: match.id, user_id: user.id})
+    //     })
+    //     .then((r) => r.json())
+    //     .then((convos) => {
+    //         console.log(convos);
+    //         // setConvos(convos)
+    //     })
+    // }
 
-    },[]);
+    // },[]);
     // console.log(convos);
     // console.log(match);
 
@@ -114,7 +115,7 @@ function MessageForm({user, match, conversation, getMatch, messages }) {
           
         </form>
         <MessageList user={user} match={match} message=
-        {message} conversation={conversation} getMatch={getMatch} messages={messages} />
+        {message} conversation={conversation} getMatch={getMatch}  />
      
        
 

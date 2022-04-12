@@ -9,6 +9,7 @@ import Browse from './Browse';
 import Matches from './Matches';
 import MessageForm from '../pages/MessageForm'
 import ConversationList from './ConversationList';
+import Match from '../pages/Match';
 // import Conversation from './Conversation';
 
 
@@ -53,6 +54,9 @@ function App() {
           />} ></Route>
           <Route exact path ='/browse' element={<Browse user={user} />}></Route>
           <Route exact path='/matches' element={<Matches user={user} />} >
+          </Route>
+          <Route exact path ='match' element= {<Match />}>
+
           </Route>
           <Route exact path='/message' element={<MessageForm user={user} />}></Route>
           <Route exact path ='/convos' element={<ConversationList user={user}/>}></Route> 

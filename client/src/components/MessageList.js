@@ -1,11 +1,21 @@
 import {useState, useEffect} from 'react';
 import Message from './Message';
 
-function MessageList({conversation, user, match, getMatch}) {
+function MessageList({conversation, user, match}) {
 
     const [messages, setMessages] = useState([]);
 
 
+    function getConvo(match, con) {
+            fetch(`api/conversations/${con.id}`)
+            .then((r) => r.json())
+            .then((c) => {
+                setMessages(c.messages)
+                console.log(messages);
+    
+            })   
+          
+    }
     // function getMessages()  {
         
     //     fetch(`api/conversations/${conversation.id}/messages`)
@@ -53,7 +63,6 @@ function MessageList({conversation, user, match, getMatch}) {
         <Message user={user} match={match} key={mes.id} mes={mes} />
         )) 
     
-
     
     return(
         <>
@@ -68,7 +77,7 @@ function MessageList({conversation, user, match, getMatch}) {
           
         </form> */}
         <section>
-            {/* <button onClick={() => viewMessages(match)}>View Messages</button> */}
+            <button onClick={() => getConvo(match, conversation)}>View Messages</button>
             <article>{displayMessages}</article>
             {/* <button onClick={() => viewMessages(conversation)}>messages</button>
              */}

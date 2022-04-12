@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import Match from './Match';
+import MatchCard from './MatchList';
 
 
 
@@ -16,7 +16,7 @@ function Matches({user}) {
     }, []);
 
     const displayMatches = matches.map((match) => (
-        <Match key={match.id} match={match} user={user} />
+        <MatchCard key={match.id} match={match} user={user} />
     ))
 
     return(
