@@ -19,13 +19,13 @@ function MessageForm({user, match, selectedMatch, conversation, getMatch }) {
 
     
     useEffect(() => {
-        if(!conversation) {
+        if(!selectedMatch) {
         fetch(`api/conversations`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({recipient_id: match.id, user_id: user.id})
+            body: JSON.stringify({recipient_id: selectedMatch.id, user_id: user.id})
         })
         .then((r) => r.json())
         .then((convos) => {
@@ -34,7 +34,7 @@ function MessageForm({user, match, selectedMatch, conversation, getMatch }) {
         })
     }
 
-    },[]);
+    },[selectedMatch]);
     // console.log(convos);
     // console.log(match);
 

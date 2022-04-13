@@ -4,7 +4,7 @@ class Api::UsersController < ApplicationController
         current_user = User.find_by(id: session[:user_id])
         users = User.where.not(id: current_user.id)
         # if users.valid?
-             render json: users
+             render json: users, include: [:messages]
         # else
         #     render json: {errors: users.errors.full_messages}, status: :not_found
         # end
@@ -25,7 +25,7 @@ class Api::UsersController < ApplicationController
         
         user = User.find_by(id: session[:user_id])
         if user
-            render json: user, status: :created
+            render json: user, status: :created, include: [:messages]
         else
             render json: {errors: ["Not authorized"]}, status: :unauthorized
         end

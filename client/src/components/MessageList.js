@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import Message from './Message';
 
-function MessageList({conversation, user, match}) {
+function MessageList({conversation, user, match, selectedMatch}) {
 
     const [messages, setMessages] = useState([]);
 
@@ -61,7 +61,7 @@ function MessageList({conversation, user, match}) {
     // })
 
     const displayMessages = messages.map((mes) => (
-        <Message user={user} match={match} key={mes.id} mes={mes} />
+        <Message user={user} selectedMatch={selectedMatch} match={match} key={mes.id} mes={mes} />
         )) 
     
     

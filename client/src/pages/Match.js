@@ -16,12 +16,16 @@ function Match({user, selectedMatch, match, convos}) {
 // console.log(selectedMatch);
     useEffect(() => {
         console.log(selectedMatch);
-        const thisConvo = convos.find((c) => {
-            return c.user_id === user.id && c.recipient_id === selectedMatch.id
-            
-        })
-        setConversation(thisConvo);
-        console.log(conversation)
+        if(selectedMatch) {
+            const thisConvo = convos.find((c) => {
+                return c.user_id === user.id && c.recipient_id === selectedMatch.id
+                
+            })
+            setConversation(thisConvo);
+            console.log(conversation)
+
+        }
+   
         // openConvo(selectedMatch, conversation);
         
 

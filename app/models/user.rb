@@ -3,7 +3,7 @@ class User < ApplicationRecord
     has_one_attached :user_image
     has_many :likes
     has_many :conversations
-    # has_many :messages, through: :conversations
+    has_many :messages, through: :conversations
 
     def matches 
         liked_user_ids = Like.where(user_id: self.id).map(&:liked_user_id)
