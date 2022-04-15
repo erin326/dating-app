@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import MatchCard from './MatchList';
+import MatchCard from './MatchCard';
 
 
 

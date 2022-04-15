@@ -16,25 +16,27 @@ function MessageForm({user, match, selectedMatch, conversation, getMatch }) {
     // const [convos, setConvos] = useState([]);
 
     
-
+    console.log(selectedMatch);
     
-    useEffect(() => {
-        if(!selectedMatch) {
+    function startChat(matchObj) {
+        if(!conversation){
+     
         fetch(`api/conversations`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({recipient_id: selectedMatch.id, user_id: user.id})
+            body: JSON.stringify({recipient_id: matchObj.id, sender_id: user.id})
         })
         .then((r) => r.json())
         .then((convos) => {
             console.log(convos);
             // setConvos(convos)
         })
-    }
+        }
+        console.log(conversation);
 
-    },[selectedMatch]);
+    }
     // console.log(convos);
     // console.log(match);
 
@@ -77,7 +79,7 @@ function MessageForm({user, match, selectedMatch, conversation, getMatch }) {
         e.preventDefault();
      
         // createConvo();
-        if (conversation) {
+        // if (conversation) {
             fetch(`api/conversations/${conversation.id}/messages`, {
                 method: "POST",
                 headers: {
@@ -91,7 +93,7 @@ function MessageForm({user, match, selectedMatch, conversation, getMatch }) {
     
                  setMessage(message)})
 
-        }
+        // }
     
 
 
@@ -103,7 +105,7 @@ function MessageForm({user, match, selectedMatch, conversation, getMatch }) {
 
     return(
         <>
-         {/* <button onClick={() => getThisMatch}>Message</button> */}
+         <button onClick={() => startChat(selectedMatch)}>Message</button>
          {/* <textarea>
                 <MessageList conversation={conversation}/>
             </textarea> */}
