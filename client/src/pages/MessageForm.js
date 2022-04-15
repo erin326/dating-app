@@ -1,4 +1,4 @@
-import MessageList from '../components/MessageList';
+import MessageList from '../components/MessageCard';
 
 import {useEffect, useState} from 'react';
 
@@ -24,7 +24,9 @@ function MessageForm({user, match, selectedMatch, conversation, getMatch }) {
         fetch(`api/conversations`, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                
+                "Content-Type": "application/json",
+                "Accept": 'application/json'
             },
             body: JSON.stringify({recipient_id: matchObj.id, sender_id: user.id})
         })
@@ -83,7 +85,8 @@ function MessageForm({user, match, selectedMatch, conversation, getMatch }) {
             fetch(`api/conversations/${conversation.id}/messages`, {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "Accept": 'application/json'
                 },
                 body: JSON.stringify({body: messageBody, user_id: user.id, conversation_id: conversation.id})
             })

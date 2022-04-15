@@ -20,9 +20,10 @@ import Match from '../pages/Match';
 
 function App() {
 
-  require('react-dom');
-  window.React2 = require('react');
-  console.log(window.React1 === window.React2);
+  // require('react-dom');
+  // window.React2 = require('react');
+  // console.log(window.React1 === window.React2);
+  
 
   const [user, setUser] = useState(null);
   // const [selectedUser, setSelectedUser] = useState({});

@@ -5,11 +5,13 @@ function MessageList({conversation, user, match, selectedMatch}) {
 
     const [messages, setMessages] = useState([]);
 
+    const [activeConversation, setActiveConversation] = useState(null)
 
     function getConvo(match, con) {
             fetch(`api/conversations/${con.id}`)
             .then((r) => r.json())
             .then((c) => {
+                setActiveConversation(c)
                 setMessages(c.messages)
                 console.log(messages);
                 console.log(con);

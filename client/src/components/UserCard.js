@@ -1,7 +1,15 @@
 import {Card, CardDescription, Image} from 'semantic-ui-react'
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 
 function UserCard({otherUser, slideRight, user}) {
+    const [location, setLocation] = useState([]);
+
+    useEffect(() => {
+        fetch(`api/location`)
+        .then((r) => r.json())
+        .then((location) => setLocation(location))
+
+    },[])
  
     const [errors, setErrors] = useState([]);
     console.log(otherUser.id -1);
@@ -12,7 +20,8 @@ function UserCard({otherUser, slideRight, user}) {
        fetch(`api/approve/${otherUser.id}`,{
             method: "POST",
             headers: {
-                "Content-Type" : 'application/json'
+                "Content-Type" : 'application/json',
+                
             },
              body: JSON.stringify({user_id: user.id, liked_user_id: otherUser.id})
         }
@@ -49,7 +58,10 @@ function UserCard({otherUser, slideRight, user}) {
                     <br></br>
                     Interested in: {otherUser.gender_interest}
                     </Card.Meta>
-                    <CardDescription>{otherUser.bio}</CardDescription>
+                    <CardDescription>{otherUser.bio}
+                    <br></br>
+                    {location}
+                    </CardDescription>
                     <button onClick={approve}>yes</button> 
                 
                 </Card.Content>

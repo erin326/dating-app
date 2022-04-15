@@ -4,7 +4,10 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
-// import { ActionCableProvider } from 'react-actioncable-provider';
+import ActionCable  from 'actioncable';
+
+
+import { ActionCableProvider } from 'react-actioncable-provider';
 
 
 
@@ -14,12 +17,9 @@ import reportWebVitals from './reportWebVitals';
 ReactDOM.render(
   <BrowserRouter>
     <React.StrictMode>
-      {/* <ActionCableProvider url='api/cable'> */}
+      <ActionCableProvider url='api/cable'>
         <App/>
-      {/* </ActionCableProvider> */}
-      {/* <App
-      //  cableApp={CableApp}
-        /> */}
+      </ActionCableProvider>
     </React.StrictMode>
   </BrowserRouter>,
   document.getElementById('root')

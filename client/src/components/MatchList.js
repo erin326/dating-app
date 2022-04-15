@@ -15,6 +15,7 @@ function MatchList({match, user}) {
 
 
     const [convos, setConvos] = useState([]);
+
     
   
   
@@ -39,6 +40,7 @@ function MatchList({match, user}) {
           // console.log(selectedMatch);
   
             setSelectedMatch(m)
+            
             console.log(selectedMatch);
             // const thisConvo = convos.find((c) => {
             //     if(c.user_id === user.id && c.recipient_id === matchObj.id) {
