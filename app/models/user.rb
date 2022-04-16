@@ -6,17 +6,17 @@ class User < ApplicationRecord
     has_many :conversations, through: :user_conversations
     has_many :messages
 
-    geocoded_by :ip_address,
-        :latitude => :lat, :longitude => :lon
-    after_validation :geocode
-    reverse_geocoded_by :lat, :lon do |obj,results|
-        if geo = results.first
-          obj.location    = geo.city
-        #   obj.zipcode = geo.postal_code
-        #   obj.country = geo.country_code
-        end
-      end
-      after_validation :reverse_geocode
+    # geocoded_by :ip_address,
+    #     :latitude => :lat, :longitude => :lon
+    # after_validation :geocode
+    # reverse_geocoded_by :lat, :lon do |obj,results|
+    #     if geo = results.first
+    #       obj.location    = geo.city
+    #     #   obj.zipcode = geo.postal_code
+    #     #   obj.country = geo.country_code
+    #     end
+    #   end
+    #   after_validation :reverse_geocode
       
 
 

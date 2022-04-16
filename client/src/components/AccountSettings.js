@@ -31,12 +31,14 @@ function AccountSettings({user,
     //   }, [selectedUser]);
 
 
-    // useEffect(() => {
-    //     fetch(`api/me`)
-    //     .then((r) => r.json())
-    //     .then((data) => console.log(data))
+    useEffect(() => {
+        fetch(`api/location`)
+        .then((r) => r.json())
+        .then((data) => {
+            setLocation(data)
+            console.log(data)})
 
-    // },[])
+    },[])
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -91,7 +93,7 @@ function AccountSettings({user,
                 r.json().then((error) => setErrors(error.errors));
             }
         });
-    }
+    } 
     }
 
     function getLocation() {
@@ -142,14 +144,14 @@ function AccountSettings({user,
         }
     }
    
-    function showLocation() {
-        if(user.longitude, user.longitude) {
-            fetch(`api/location/${user.id}`)
-            .then((r) => r.json())
-            .then((loc) => console.log(loc))
+    // function showLocation() {
+    //     if(user.longitude, user.longitude) {
+    //         fetch(`api/location/${user.id}`)
+    //         .then((r) => r.json())
+    //         .then((loc) => console.log(loc))
              
-        }
-    }
+    //     }
+    // }
 
     return(
         <>
@@ -214,9 +216,12 @@ function AccountSettings({user,
 
 
         </form>
-        <p>{user.location}</p>
+        
+        {errors ? errors.map((err) => (<p>{err}</p>)) 
+          : null}
+        <p>{userLatitude} {userLongitude}</p>
+        <p>{location}</p>
 
-        {/* {errors ? errors.map((error) => <li key={error}>{error}</li>) : null} */}
 
 
         </>
