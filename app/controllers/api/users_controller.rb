@@ -37,13 +37,13 @@ class Api::UsersController < ApplicationController
         render json: user
     end
 
-    # def location
-    #     # if Rails.env.production?
-    #     city = request.location.city
-    #     country = request.location.country_code
-    #     render json: city, location
-    #     # end
-    # end
+    def location
+        if Rails.env.production?
+        city = request.location.city
+        country = request.location.country_code
+        render json: city, location
+        end
+    end
 
     private 
     
