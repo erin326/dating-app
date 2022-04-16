@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     get 'match/:id', to: 'browse#show_match'
     post '/open_conversation/:id', to: 'browse#open_conversation'
 
-    get '/location', to: 'users#location'
+    get '/location/:id', to: 'users#location'
     post '/signup', to: 'users#create'
     get '/me', to: 'users#show'
     post '/login', to: 'sessions#create'

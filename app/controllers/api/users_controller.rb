@@ -37,18 +37,30 @@ class Api::UsersController < ApplicationController
         render json: user
     end
 
-    def location
-        if Rails.env.production?
-        city = request.location.city
-        country = request.location.country_code
-        render json: city, location
-        end
-    end
+    # def location
+    #     if Rails.env.production?
+    #     city = request.location.city
+
+    #     # country = request.location.country_code
+    #     render json: city
+    #     end
+    #     # user = User.find(params[:id])
+    #     # city = reverse_geocoded_by: :latitude, :longitude,
+    #     # :address => user.location
+    
+    #     # after_validation :reverse_geocode 
+    
+    #     # render json: city  
+    #     # geocoded_by :ip_address,
+    #     # :latitude => 
+    
+        
+    # end
 
     private 
     
     def user_params
-        params.permit(:username, :password, :password_confirmation, :gender, :bio, :age, :gender_interest, :user_image)
+        params.permit(:username, :password, :password_confirmation, :gender, :bio, :age, :gender_interest, :user_image, :location, :longitude, :latitude)
     end
 
 end

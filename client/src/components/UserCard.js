@@ -59,8 +59,7 @@ function UserCard({otherUser, slideRight, user}) {
                     Interested in: {otherUser.gender_interest}
                     </Card.Meta>
                     <CardDescription>{otherUser.bio}
-                    <br></br>
-                    {location}
+                 
                     </CardDescription>
                     <button onClick={approve}>yes</button> 
                 
