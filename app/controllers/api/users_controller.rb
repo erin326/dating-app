@@ -25,7 +25,7 @@ class Api::UsersController < ApplicationController
         
         user = User.find_by(id: session[:user_id])
         if user
-            render json: user, status: :created, include: [:messages]
+            render json: user, include: [:messages]
         else
             render json: {errors: ["Not authorized"]}, status: :unauthorized
         end
@@ -37,30 +37,30 @@ class Api::UsersController < ApplicationController
         render json: user
     end
 
-    def location
-        # if Rails.env.production?
-        city = request.location.city
+    # def location
+    #     # if Rails.env.production?
+    #     city = request.location.city
 
-        # country = request.location.country_code
-        render json: city
-        # end
-        # user = User.find(params[:id])
-        # city = reverse_geocoded_by: :latitude, :longitude,
-        # :address => user.location
+    #     # country = request.location.country_code
+    #     render json: city
+    #     # end
+    #     # user = User.find(params[:id])
+    #     # city = reverse_geocoded_by: :latitude, :longitude,
+    #     # :address => user.location
     
-        # after_validation :reverse_geocode 
+    #     # after_validation :reverse_geocode 
     
-        # render json: city  
-        # geocoded_by :ip_address,
-        # :latitude => 
+    #     # render json: city  
+    #     # geocoded_by :ip_address,
+    #     # :latitude => 
     
         
-    end
+    # end
 
     private 
     
     def user_params
-        params.permit(:username, :password, :password_confirmation, :gender, :bio, :age, :gender_interest, :user_image, :location, :longitude, :latitude)
+        params.permit(:username, :password, :password_confirmation, :gender, :bio, :age, :gender_interest, :user_image, :location, :lon, :lat)
     end
 
 end

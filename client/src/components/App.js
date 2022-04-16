@@ -29,6 +29,10 @@ function App() {
   // const [selectedUser, setSelectedUser] = useState({});
   const [errors, setErrors] = useState([]);
 
+   const [location, setLocation] = useState([]);
+    const [userLatitude, setUserLatitude] = useState([]);
+    const [userLongitude, setUserLongitude] = useState([]);
+
   useEffect(() => {
     fetch('/api/me').then((r) => {
       if (r.ok) {
@@ -43,6 +47,49 @@ function App() {
   //   setSelectedUser(userObj);
   //   console.log(userObj);
   // }
+
+  if(user) {
+ 
+     if('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+    
+        if(user.lat !== 41.982398 || user.lon !== -87.660815) {
+              console.log(position.coords.latitude,  
+                  position.coords.longitude);
+                  setUserLatitude(position.coords.latitude)
+                  setUserLongitude(position.coords.longitude)
+
+          
+              fetch(`api/users/${user.id}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type" : "application/json",
+                    "Accept" : "application/json"
+                },
+                body: JSON.stringify({
+                    // location: location
+                    lat: userLatitude,
+                    lon: userLongitude
+                  
+                    })
+              })
+              .then((r) => r.json())
+              .then((loc) => console.log(loc))
+        }
+      })
+
+  
+      console.log(userLatitude, userLongitude, 'state');
+  
+  
+  
+      }
+
+   
+
+  }
+
+  
 
   return (
     <div className="App">

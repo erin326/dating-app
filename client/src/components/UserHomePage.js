@@ -3,7 +3,7 @@ import {Card, CardDescription, Image} from 'semantic-ui-react'
 
 function UserHomePage({user}) {
 
-    console.log(user)
+    console.log(user.lat, user.lon)
 
     
     return (

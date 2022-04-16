@@ -12,6 +12,7 @@ function NavBar({user, setUser}) {
             }
         })
     }
+    
     return (
         <>
          <h3 id="welcome-nav">Welcome, {user.username}!</h3>

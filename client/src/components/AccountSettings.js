@@ -14,9 +14,9 @@ function AccountSettings({user,
     const [userId, setUserId] = useState(0);
     const [errors, setErrors] = useState([]);
 
-    const [location, setLocation] = useState([]);
-    const [userLatitude, setUserLatitude] = useState([]);
-    const [userLongitude, setUserLongitude] = useState([]);
+    // const [location, setLocation] = useState([]);
+    // const [userLatitude, setUserLatitude] = useState([]);
+    // const [userLongitude, setUserLongitude] = useState([]);
 
     const navigate = useNavigate();
 
@@ -30,15 +30,6 @@ function AccountSettings({user,
        
     //   }, [selectedUser]);
 
-
-    useEffect(() => {
-        fetch(`api/location`)
-        .then((r) => r.json())
-        .then((data) => {
-            setLocation(data)
-            console.log(data)})
-
-    },[])
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -96,62 +87,42 @@ function AccountSettings({user,
     } 
     }
 
-    function getLocation() {
-        if('geolocation' in navigator) {
-            navigator.geolocation.getCurrentPosition((position) => {
+    // function getLocation() {
+    //     if('geolocation' in navigator) {
+    //         navigator.geolocation.getCurrentPosition((position) => {
                 
-                    console.log(position.coords.latitude,  
-                        position.coords.longitude);
-                        setUserLatitude(position.coords.latitude)
-                        setUserLongitude(position.coords.longitude)
-
-                    // const array = [position.coords.latitude,  
-                    //     position.coords.longitude]
-                    //     console.log(array);
-                       
-                    //     const myLocation = array.join('');
-                    //     setLocation(myLocation);
-                    //     console.log(myLocation)
-
-                //    console.log( {latitude: position.coords.latitude,
-                //     longitude: (position.coords.longitude).replace(/\D/g, "")})
-           
+    //                 console.log(position.coords.latitude,  
+    //                     position.coords.longitude);
+    //                     setUserLatitude(position.coords.latitude)
+    //                     setUserLongitude(position.coords.longitude)
 
                 
-            //    if(userLatitude, userLongitude) {
-            //     fetch(`api/users/${user.id}`, {
-            //         method: "PATCH",
-            //         headers: {
-            //             "Content-Type" : "application/json",
-            //             "Accept" : "application/json"
-            //         },
-            //         body: JSON.stringify({
-            //             // location: location
-            //             latitude: userLatitude,
-            //             longitude: userLongitude
+    //         //    if(userLatitude, userLongitude) {
+    //             fetch(`api/users/${user.id}`, {
+    //                 method: "PATCH",
+    //                 headers: {
+    //                     "Content-Type" : "application/json",
+    //                     "Accept" : "application/json"
+    //                 },
+    //                 body: JSON.stringify({
+    //                     // location: location
+    //                     lat: userLatitude,
+    //                     lon: userLongitude
                        
-            //             })
-            //     })
-            //     .then((r) => r.json())
-            //     .then((loc) => console.log(loc))
-            // }
-            })
+    //                     })
+    //             })
+    //             .then((r) => r.json())
+    //             .then((loc) => console.log(loc))
+            
+    //         })
    
         
-            console.log(userLatitude, userLongitude, 'state');
+    //         console.log(userLatitude, userLongitude, 'state');
         
         
-        }
-    }
-   
-    // function showLocation() {
-    //     if(user.longitude, user.longitude) {
-    //         fetch(`api/location/${user.id}`)
-    //         .then((r) => r.json())
-    //         .then((loc) => console.log(loc))
-             
     //     }
     // }
+   
 
     return(
         <>
@@ -162,7 +133,7 @@ function AccountSettings({user,
         value={username}
         onChange={(e) => setUsername(e.target.value)}
         ></input> */}
-        <button onClick={getLocation}>Add Location</button>
+        {/* <button onClick={getLocation}>Add Location</button> */}
         {/* <button onClick={showLocation}>show Location</button> */}
 
         <form onSubmit={handleSubmit}>
@@ -219,8 +190,8 @@ function AccountSettings({user,
         
         {errors ? errors.map((err) => (<p>{err}</p>)) 
           : null}
-        <p>{userLatitude} {userLongitude}</p>
-        <p>{location}</p>
+        {/* <p>{userLatitude} {userLongitude}</p>
+        <p>{location}</p> */}
 
 
 
