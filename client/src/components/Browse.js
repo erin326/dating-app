@@ -8,29 +8,12 @@ function Browse({user}) {
     const [likedUser, setLikedUser] = useState([]);
     const[selectedUser, setSelectedUser] = useState({});
 
- 
-
      
 
 
     const slideRight = () => {
         setIndex((index + 1) % displayUsers.length); // increases index by 1
-        // setLikedUser(index)
-        // setSelectedUser(user)
   
-        
-            // fetch(`api/users/${user.id}`, {
-            //     method: "PATCH",
-            //     headers: {
-            //         "Content-Type" : 'application/json'
-            //     },
-            //     body: JSON.stringify({liked_people: })
-            
-
-            // } 
-        
-        // )
-
       };
 
     const displayUsers = allUsers.map((thisUser) => (
@@ -42,14 +25,14 @@ function Browse({user}) {
     
         )
   
-    const slideLeft = () => {
-        const nextIndex = index - 1;
-        if (nextIndex < 0) {
-          setIndex(displayUsers.length - 1); // returns last index of images array if index is less than 0
-        } else {
-          setIndex(nextIndex);
-        }
-      };
+    // const slideLeft = () => {
+    //     const nextIndex = index - 1;
+    //     if (nextIndex < 0) {
+    //       setIndex(displayUsers.length - 1); // returns last index of images array if index is less than 0
+    //     } else {
+    //       setIndex(nextIndex);
+    //     }
+    //   };
 
     useEffect(() => {
         fetch('/api/browse')
@@ -63,10 +46,10 @@ function Browse({user}) {
     return(
         displayUsers.length > 0 && (
             <div>
-            <button onClick={slideLeft}>no</button>
+            {/* <button onClick={slideLeft}>no</button> */}
             {displayUsers[index]}
       
-            <button onClick={slideRight}>yes</button>
+            {/* <button onClick={slideRight}>yes</button> */}
           </div>
     
 

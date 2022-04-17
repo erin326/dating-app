@@ -21,10 +21,10 @@ class User < ApplicationRecord
 
 
     def matches 
-        liked_user_ids = Like.where(user_id: self.id).map(&:liked_user_id)
-        likes_me_user_ids = Like.where(liked_user_id: self.id).map(&:user_id)
+        liked_user_ids = Like.where(user_id: self.id, like_account_approves: true).map(&:liked_user_id)
+        likes_me_user_ids = Like.where(liked_user_id: self.id, user_approves: true ).map(&:user_id)
 
-        matched_ids = liked_user_ids.filter{|id| likes_me_user_ids.include?(id)}
+        matched_ids = likes_me_user_ids.filter{|id| likes_me_user_ids.include?(id)}
       
         liked_me = User.where(id: matched_ids)
         

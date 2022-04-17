@@ -67,6 +67,27 @@ function UserCard({otherUser, slideRight, user}) {
        
    }
 
+       function decline() {
+        // const nextIndex = index - 1;
+        // if (nextIndex < 0) {
+        //   setIndex(displayUsers.length - 1); // returns last index of images array if index is less than 0
+        // } else {
+        //   setIndex(nextIndex);
+        // }
+            fetch(`api/decline/${otherUser.id}`, {
+                method: "POST", 
+                headers: {
+                    "Content-Type" : 'application/json'
+                }, 
+                body: JSON.stringify({user_id: user.id, liked_user_id: otherUser.id
+                })
+                
+            })
+            .then((r) => r.json())
+            .then((data) => console.log(data))
+            slideRight();
+
+        };
 
             
    
@@ -86,6 +107,8 @@ function UserCard({otherUser, slideRight, user}) {
                     <button onClick={() => getDistance(user.lat, user.lon, otherUser.lat, otherUser.lon)}>See Distance</button>
                     {showDistance ? <p>{distance} miles away</p>  : null}
                     </CardDescription>
+                       
+                    <button onClick={decline}>no</button> 
                     <button onClick={approve}>yes</button> 
                 
 

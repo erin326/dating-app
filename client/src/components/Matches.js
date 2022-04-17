@@ -11,7 +11,7 @@ function Matches({user}) {
         fetch(`api/matches`)
         .then((r) => r.json())
         .then((matches) => {
-            // console.log(matches);
+            console.log(matches);
             setMatches(matches)})
     }, []);
 
