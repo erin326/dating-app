@@ -8,13 +8,13 @@ class Api::ConversationsController < ApplicationController
 
     end
 
-    def show
-        # current_user = User.find_by(id: session[:user_id])
-        conversation =  Conversation.find(params[:id])
-        render json: conversation
+    # def show
+    #     # current_user = User.find_by(id: session[:user_id])
+    #     conversation =  Conversation.find(params[:id])
+    #     render json: conversation
 
 
-    end
+    # end
 
 
     def create 
@@ -47,25 +47,22 @@ class Api::ConversationsController < ApplicationController
         conversation.save
         render json: conversation
             
-        #     serialized_data = ActiveModelSerializers::Adapter::Json.new(
-        #         ConversationSerializer.new(conversation)
-        #       ).serializable_hash
-
-        #       ActionCable.server.broadcast( "current_user_#{current_user.id}", serialized_data)
-        #       ActionCable.server.broadcast("current_user_#{params['recipient_id']}", serialized_data)
-
-        #       head :ok
-              
-        #     end
 
         
     end
     def other_user_convo
         convo = Conversation.find_by(sender_id: params[:id])
-        
-        render json: convo, serializer: ConversationSerializer
 
+        if convo.present?
+            render json: convo, serializer: ConversationSerializer
+        else
+            render json: {errors: 'no messages'}
+        end 
 
+    end
+    def show
+        conversation = Conversation.find(params[:id])
+        render json: conversation, serializer: ConversationSerializer
     end
 
     private

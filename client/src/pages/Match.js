@@ -10,7 +10,7 @@ function Match({user, selectedMatch, match, convos, setShowInfo}) {
     // console.log(selectedMatch);
 
  
-    // const [messages, setMessages] = useState([]);
+    const [messages, setMessages] = useState([]);
     const [conversation, setConversation] = useState({});
     console.log(selectedMatch);
 
@@ -30,12 +30,41 @@ function Match({user, selectedMatch, match, convos, setShowInfo}) {
             console.log(conversation)
 
         }
+   
+         
+            
+      
     
    
         // openConvo(selectedMatch, conversation);
         
 
     }, [selectedMatch])
+
+    function startChat(matchObj) {
+   
+     
+        if(conversation) {
+        fetch(`api/conversations`, {
+                method: "POST",
+                headers: {
+                    
+                    "Content-Type": "application/json",
+                    "Accept": 'application/json'
+                },
+                body: JSON.stringify({recipient_id: matchObj.id, sender_id: user.id})
+            })
+        }
+        // }else {
+        //         fetch(`api/conversations/${conversation.id}/messages`)
+        //         .then((r) => r.json())
+        //         .then((data) => setMessages(data))
+        
+        // }
+       
+        console.log(conversation);
+
+    }
     
     // const [matchConvo, setMatchConvo] = useState([])
     // const [matchMessages, setMatchMessages] = useState([]);
@@ -86,10 +115,11 @@ function Match({user, selectedMatch, match, convos, setShowInfo}) {
                 </Card.Description>
                 </Card.Content>
                 {/* <Link to='/message' >Message</Link> */}
+                <button onClick={() => startChat(selectedMatch)}>Message</button>
                 <MessageForm
-        //  getMatch={getThisMatch}
+        //  getMatch={getThisMatch} 
           user={user} selectedMatch={selectedMatch} match={match} conversation={conversation}
-          
+        //   setMessages={setMessages} messages={messages}
 
         //   matchConvo={matchConvo}  
           />

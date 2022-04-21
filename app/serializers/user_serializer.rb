@@ -11,4 +11,5 @@ class UserSerializer < ActiveModel::Serializer
       rails_blob_url(object.user_image, only_path: true) 
     end
   end
+  
 end

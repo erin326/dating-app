@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-function Message({mes, match, user, selectedMatch}) {
+function Message({mes, message, match, user, selectedMatch, lastElement}) {
     // console.log(mes)
     // console.log(selectedMatch.username);
     // console.log(user);
@@ -42,12 +42,14 @@ function Message({mes, match, user, selectedMatch}) {
     //     })
     // }
     // findUser(selectedMatch)
-
+    
     return(
         <>
         <div className='user-messages'>
         <strong>{user.username}</strong>
-        <p>{mes.body}</p>
+        <p>{ mes.body}</p>
+        
+        {/* {lastElement  ? lastElement : mes.body} */}
     
         </div>
     

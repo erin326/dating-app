@@ -1,10 +1,12 @@
 class Api::MessagesController < ApplicationController
 
     def create 
-        message = Message.create(message_params)
+        message = Message.new(message_params)
         current_user = User.find_by(id: session[:user_id]) 
         message.user_id = current_user.id
-        conversation = Conversation.find(params[:id])
+        message.save
+
+        conversation = Conversation.find(message_params[:conversation_id])
         conversation.messages << message
         current_user.messages << message
         # conversation.messages.order(created_at: :desc)
@@ -44,6 +46,8 @@ class Api::MessagesController < ApplicationController
        render json: messages
 
     end
+
+   
 
  
 
