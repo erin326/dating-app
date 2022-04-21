@@ -6,7 +6,7 @@ import MessageForm from '../pages/MessageForm'
 import {useState, useEffect} from 'react';
 
 
-function Match({user, selectedMatch, match, convos}) {
+function Match({user, selectedMatch, match, convos, setShowInfo}) {
     // console.log(selectedMatch);
 
  
@@ -23,14 +23,34 @@ function Match({user, selectedMatch, match, convos}) {
                 
             })
             setConversation(thisConvo);
+            // if(thisConvo) {
+            //     getMatchConvo(selectedMatch)
+            // }
+       
             console.log(conversation)
 
         }
+    
    
         // openConvo(selectedMatch, conversation);
         
 
     }, [selectedMatch])
+    
+    // const [matchConvo, setMatchConvo] = useState([])
+    // const [matchMessages, setMatchMessages] = useState([]);
+
+    // function getMatchConvo(match) {
+    //     fetch(`api/other_user_convo/${match.id}`)
+    //     .then((r) => r.json())
+    //     .then((convo) => {
+    //         setMatchConvo(convo)
+    //         console.log(convo);
+    //         // setMatchMessages(matchConvo.messages)
+    //     })
+
+    // }
+    // console.log(matchConvo.messages)
     // console.log(conversation);
 
 
@@ -65,9 +85,14 @@ function Match({user, selectedMatch, match, convos}) {
                 {selectedMatch.bio}
                 </Card.Description>
                 </Card.Content>
+                {/* <Link to='/message' >Message</Link> */}
                 <MessageForm
         //  getMatch={getThisMatch}
-          user={user} selectedMatch={selectedMatch} match={match} conversation={conversation}  />
+          user={user} selectedMatch={selectedMatch} match={match} conversation={conversation}
+          
+
+        //   matchConvo={matchConvo}  
+          />
 
            
                 {/* <button onClick={() => openConvo(selectedMatch)}>get convo</button> */}

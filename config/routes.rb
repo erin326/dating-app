@@ -12,7 +12,8 @@ Rails.application.routes.draw do
     post 'decline/:id', to: 'browse#decline'
     get 'matches', to: 'browse#matches'
     get 'match/:id', to: 'browse#show_match'
-    post '/open_conversation/:id', to: 'browse#open_conversation'
+    get '/open_conversation/:id', to: 'browse#open_conversation'
+    get 'other_user_convo/:id', to: 'conversations#other_user_convo'
 
     get '/location', to: 'users#location'
     post '/signup', to: 'users#create'

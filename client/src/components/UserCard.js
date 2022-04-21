@@ -10,7 +10,7 @@ function UserCard({otherUser, slideRight, user}) {
 
     function getDistance(lat1, lon1, lat2, lon2) {
         setShowDistance(!showDistance)
-        const R = 3958.8 ; // Radius of the earth in miles
+        const R = 3958.8 ; // Radius of the earth in miles  
         const dLat = deg2rad(lat2-lat1);  // deg2rad below
         const dLon = deg2rad(lon2-lon1); 
         const a = 

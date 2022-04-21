@@ -11,6 +11,7 @@ class Api::BrowseController < ApplicationController
     def approve
 
         current_user = User.find_by(id: session[:user_id])
+        liked_user = User.find(params[:id])
 
         liked_id = params[:id]
         # logger.debug "User id for matching is #{user_id}"
@@ -22,9 +23,11 @@ class Api::BrowseController < ApplicationController
         # new_like.user_id = current_user.id
 
         # if new_like.save 
+
             they_like_us = Like.where(user_id: liked_id, liked_user_id: current_user.id, user_approves: true)
             if they_like_us.present?
                 new_like.like_account_approves = true 
+                
             end 
             
             # @they_like_us = existing_like > 0

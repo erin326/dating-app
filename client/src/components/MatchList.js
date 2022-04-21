@@ -18,8 +18,9 @@ function MatchList({match, user}) {
 
     
   
-  
+//   console.log(selectedMatch);
     useEffect(() => {
+        
         fetch(`api/conversations`)
         .then((r) => r.json())
         .then((convos) => {
@@ -28,7 +29,7 @@ function MatchList({match, user}) {
         })
         
     
-    },[selectedMatch])
+    },[])
     
 
     
@@ -41,7 +42,7 @@ function MatchList({match, user}) {
   
             setSelectedMatch(m)
             
-            console.log(selectedMatch);
+            // console.log(selectedMatch);
             // const thisConvo = convos.find((c) => {
             //     if(c.user_id === user.id && c.recipient_id === matchObj.id) {
 

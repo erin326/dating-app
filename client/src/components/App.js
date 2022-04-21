@@ -10,6 +10,7 @@ import Matches from './Matches';
 import MessageForm from '../pages/MessageForm'
 import ConversationList from './ConversationList';
 import Match from '../pages/Match';
+import {StreamChat} from 'stream-chat'
 
 // import Conversation from './Conversation';
 
@@ -32,23 +33,37 @@ function App() {
    const [location, setLocation] = useState([]);
     const [userLatitude, setUserLatitude] = useState([]);
     const [userLongitude, setUserLongitude] = useState([]);
+    const [loggedIn, setLoggedIn] = useState(false)
+    const [conversation, setConversation] = useState({});
+    
+
+    
 
   useEffect(() => {
     fetch('/api/me').then((r) => {
       if (r.ok) {
-        r.json().then((user) => setUser(user));
+        r.json().then((user) => {setUser(user)
+        // setLoggedIn(true)
+        console.log(user);
+        });
       }
     })
   }, []);
+  
+
+  // loggedIn ? setLoggedIn(!loggedIn) : loggedIn
 
   if(!user) return <Login onLogin={setUser} />;
 
+
+  // loggedIn ? setLoggedIn(!loggedIn) : setLoggedIn(loggedIn)
   // function selectUser(userObj) {
   //   setSelectedUser(userObj);
   //   console.log(userObj);
   // }
 
-  if(user) {
+  if(!user.lat || !user.lon) {
+    console.log(user);
  
      if('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -83,12 +98,14 @@ function App() {
   
   
   
-      }
+    }
 
    
 
   }
 
+  
+  
   
 
   return (
@@ -102,13 +119,13 @@ function App() {
           // setSelectedUser={setSelectedUser} 
           />} ></Route>
           <Route exact path ='/browse' element={<Browse user={user} />}></Route>
-          <Route exact path='/matches' element={<Matches user={user} />} >
+          <Route exact path='/matches' element={<Matches user={user}  />} >
           </Route>
-          <Route exact path ='match' element= {<Match />}>
+          <Route exact path ='/match' element= {<Match />}>
 
           </Route>
           <Route exact path='/message' element={<MessageForm user={user} />}></Route>
-          <Route exact path ='/convos' element={<ConversationList user={user}/>}></Route> 
+          {/* <Route exact path ='/convos' element={<ConversationList user={user}/>}></Route>  */}
           <Route exact path='/' element={<UserHomePage user={user} setUser={setUser}/>}>
           </Route>
         </Routes>

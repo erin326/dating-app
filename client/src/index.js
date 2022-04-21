@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import ActionCable  from 'actioncable';
 
 
-import { ActionCableProvider } from 'react-actioncable-provider';
+// import { ActionCableProvider } from 'react-actioncable-provider';
 
 
 
@@ -17,9 +17,9 @@ import { ActionCableProvider } from 'react-actioncable-provider';
 ReactDOM.render(
   <BrowserRouter>
     <React.StrictMode>
-      <ActionCableProvider url='api/cable'>
+     
         <App/>
-      </ActionCableProvider>
+     
     </React.StrictMode>
   </BrowserRouter>,
   document.getElementById('root')

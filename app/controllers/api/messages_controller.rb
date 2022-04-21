@@ -4,13 +4,19 @@ class Api::MessagesController < ApplicationController
         message = Message.create(message_params)
         current_user = User.find_by(id: session[:user_id]) 
         message.user_id = current_user.id
+        conversation = Conversation.find(params[:id])
+        conversation.messages << message
         current_user.messages << message
+        # conversation.messages.order(created_at: :desc)
         if message.valid? 
 
-         render json: message, status: :created
+         render json: conversation.messages, status: :created
         else
             render json: {errors: message.errors.full_messages}, status: :unprocessable_entity
         end
+
+     
+
 
 
         # message = Message.new(message_params)
@@ -33,9 +39,13 @@ class Api::MessagesController < ApplicationController
 
     def index
        messages = Message.find_by(conversation_id: params[:id])
+
+    
        render json: messages
 
     end
+
+ 
 
     private 
 

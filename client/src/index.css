@@ -11,3 +11,56 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#user-messages {
+  position: absolute;
+  top: 170px;
+  bottom:0px;
+  right:0;
+  /* color: white;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 25px;
+  border: none;
+  background-color: rgb(34, 185, 82); */
+  /* width: 100px;
+  height: 60px; */
+}
+#match-messages {
+
+  position: absolute;
+  top: 170px;
+  bottom:0px;
+  left:10px;
+
+  
+}
+.user-messages {
+
+  color: white;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 25px;
+  margin-top: 5px;
+  width:fit-content;
+  padding: 10px;
+
+  background-color: rgb(80, 178, 41);
+}
+
+.match-messages {
+ 
+
+  color: white;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 25px;
+  margin-top: 5px;
+  width:fit-content;
+  padding:10px;
+
+ 
+
+  background-color: rgb(85, 103, 208);
+}
+
