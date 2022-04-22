@@ -1,11 +1,14 @@
 import {Card, CardDescription, Image} from 'semantic-ui-react'
-
+import { useEffect, useState } from 'react';
 
 function UserHomePage({user}) {
 
     console.log(user.lat, user.lon)
 
+
+
     const userImage = user.user_image
+
     
     return (
         <>

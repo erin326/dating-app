@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   namespace :api do 
 
-    resources :users, only: [:index, :update, :show]
+    resources :users, only: [:index, :update, :show, :destroy]
     resources :conversations, only: [:create, :index, :show] do 
       resources :messages, only: [:create, :index, :show]
     end
@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     get '/open_conversation/:id', to: 'browse#open_conversation'
     get 'other_user_convo/:id', to: 'conversations#other_user_convo'
 
+    get '/all_users', to: 'users#all_users'
     get '/location', to: 'users#location'
     post '/signup', to: 'users#create'
     get '/me', to: 'users#show'

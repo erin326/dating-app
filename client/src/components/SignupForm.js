@@ -1,4 +1,6 @@
 import { useState } from "react";
+import {useNavigate} from 'react-router-dom'
+
 
 function SignUpForm({onLogin}) {
 
@@ -7,6 +9,8 @@ function SignUpForm({onLogin}) {
     const [password, setPassword] = useState('');
     const [passwordConfirmation, setPasswordConfirmation] = useState('');
     const [errors, setErrors] = useState([]);
+    const navigate = useNavigate();
+
 
     function handleSignupSubmit(e) {
         e.preventDefault();
@@ -24,6 +28,7 @@ function SignUpForm({onLogin}) {
         }).then((r) => {
             if (r.ok) {
                 r.json().then((user) => onLogin(user));
+                navigate('/browse')
             }else{
                 r.json().then((error) => setErrors(error.errors))
             }

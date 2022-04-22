@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom'
 
 
-function AccountSettings({user, genderInterest, setGenderInterest, selectedMatch, setSelectedMatch
+function AccountSettings({user, genderInterest, setGenderInterest, setUser, selectedMatch, setSelectedMatch
     // selectedUser, onSelectUser, setSelectedUser
 }) {
 
@@ -20,6 +20,8 @@ function AccountSettings({user, genderInterest, setGenderInterest, selectedMatch
     // const [userLongitude, setUserLongitude] = useState([]);
 
     const navigate = useNavigate();
+
+   
 
  
     // useEffect(() => {
@@ -40,6 +42,15 @@ function AccountSettings({user, genderInterest, setGenderInterest, selectedMatch
         setGender(user.gender)
        
       }, []);
+
+      function handleDeleteAccount(id) {
+          prompt('Are you sure you want to delete your account?')
+          fetch(`api/users/${id}`, {
+              method: "DELETE"
+          })
+          navigate('/login')
+          setUser(null)
+      }
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -201,7 +212,7 @@ function AccountSettings({user, genderInterest, setGenderInterest, selectedMatch
 
 
         </form>
-        
+        <button type ='submit' onClick={() => handleDeleteAccount(user.id)}>Delete Account</button>
         {errors ? errors.map((err) => (<p>{err}</p>)) 
           : null}
         {/* <p>{userLatitude} {userLongitude}</p>

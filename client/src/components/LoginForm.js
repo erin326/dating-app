@@ -1,10 +1,13 @@
 import { useState } from 'react';
+import {useNavigate} from 'react-router-dom'
+
 
 function LoginForm({onLogin}) {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
+    const navigate = useNavigate();
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -17,6 +20,7 @@ function LoginForm({onLogin}) {
         }).then((r) => {
             if (r.ok) {
                 r.json().then((user) => onLogin(user));
+                navigate('/browse')
                 
             }else{
                 r.json().then((error) => setErrors(error.errors));

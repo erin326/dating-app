@@ -37,6 +37,14 @@ class Api::UsersController < ApplicationController
         render json: user
     end
 
+    def destroy
+        user = User.find(params[:id])
+        user.destroy
+        head :no_content
+    end
+
+   
+
     # def location
     #     # if Rails.env.production?
     #     city = request.location.city

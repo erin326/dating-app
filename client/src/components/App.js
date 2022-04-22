@@ -115,7 +115,7 @@ function App({}) {
       <NavBar user={user} setUser={setUser} />
       <main>
         <Routes>
-          <Route exact path= '/settings' element={<AccountSettings user={user} genderInterest={genderInterest} setGenderInterest={setGenderInterest} 
+          <Route exact path= '/settings' element={<AccountSettings user={user} genderInterest={genderInterest} setGenderInterest={setGenderInterest} setUser={setUser} 
           //  onSelectUser={selectUser} 
           // selectedUser={selectedUser}
           // setSelectedUser={setSelectedUser} 
@@ -128,6 +128,7 @@ function App({}) {
           </Route>
           <Route exact path='/message' element={<MessageForm user={user} />}></Route>
           <Route exact path ='/convos' element={<ConversationList key={user.username}  user={user} />}></Route> 
+          <Route exact path='/login' element={<Login />}></Route>
           <Route exact path='/' element={<UserHomePage user={user} setUser={setUser}/>}>
           </Route>
         </Routes>
