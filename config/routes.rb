@@ -22,8 +22,10 @@ Rails.application.routes.draw do
     delete '/logout', to: 'sessions#destroy'
 
     # mount ActionCable.server => '/cable'
+    mount ActionCable.server => '/cable'
 
   end
+
   
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!

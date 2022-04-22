@@ -4,7 +4,9 @@ import MatchList from './MatchList';
 
 
 
-function Matches({user}) {
+function Matches({user, selectedConvo}) {
+
+     console.log('matches');
 
     const [matches, setMatches] = useState([]);
 
@@ -17,7 +19,7 @@ function Matches({user}) {
     }, []);
 
     const displayMatches = matches.map((match) => (
-        <MatchList key={match.id} match={match} user={user} />
+        <MatchList key={match.id} match={match} user={user} selectedConvo={selectedConvo} />
     ))
 
     return(

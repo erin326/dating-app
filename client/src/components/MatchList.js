@@ -8,27 +8,27 @@ import Match from '../pages/Match';
 // import { Widget } from 'react-chat-widget';
 // import 'react-chat-widget/lib/styles.css';
 
-function MatchList({match, user}) {
+function MatchList({match, user, selectedConvo}) {
 
     const [showInfo, setShowInfo] = useState(false);
     const [selectedMatch, setSelectedMatch] = useState({});
 
 
-    const [convos, setConvos] = useState([]);
+    // const [convos, setConvos] = useState([]);
 
     
   
   
-    useEffect(() => {
-        fetch(`api/conversations`)
-        .then((r) => r.json())
-        .then((convos) => {
-            // console.log(convos)
-            setConvos(convos)
-        })
+    // useEffect(() => {
+    //     fetch(`api/conversations`)
+    //     .then((r) => r.json())
+    //     .then((convos) => {
+    //         // console.log(convos)
+    //         setConvos(convos)
+    //     })
         
     
-    },[selectedMatch])
+    // },[selectedMatch])
     
 
     
@@ -57,10 +57,26 @@ function MatchList({match, user}) {
   
         })
    
-       
-   
+    
 
     }
+    // function createConvo(match) {
+    //     setShowInfo(true)
+    //     fetch(`api/conversations`, {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type" : 'application/json'
+    //         }, 
+    //         body: JSON.stringify({
+    //             sender_id: user.id, 
+    //             recipient_id: match.id
+    //         })
+         
+    //     })
+    //     .then((r) => r.json())
+    //     .then((c) => console.log(c))
+   
+    // }
 
     
 
@@ -96,7 +112,7 @@ function MatchList({match, user}) {
     // }
 
 
-   
+   console.log('match');
     return(
         <>
         <Card className='match-list'>
@@ -120,14 +136,16 @@ function MatchList({match, user}) {
             </Card.Content>
             <button onClick={() => getThisMatch(match)}>View Profile</button>
 {/*       
-            <button onClick={() => getConvo(selectedMatch)}>get convo</button> */}
+            <button onClick={() => createConvo(selectedMatch)}>Message</button> */}
         </Card>
        
         {/* <MessageForm
         //  getMatch={getThisMatch}
           user={user} match={match}   /> */}
 
-        {showInfo ?  <Match user={user} selectedMatch={selectedMatch} convos={convos}  /> : null}
+        {showInfo ?  <Match  selectedConvo={selectedConvo} user={user} selectedMatch={selectedMatch}
+        //  convos={convos} 
+          /> : null}
         {/* <MessageList /> */}
         {/* <Link to='/message'>Message</Link> */}
 

@@ -1,9 +1,11 @@
 class User < ApplicationRecord
     has_secure_password
     has_one_attached :user_image
+    validates :username, presence: true, uniqueness: true
     has_many :likes
-    has_many :user_conversations, dependent: :destroy
-    has_many :conversations, through: :user_conversations
+    
+    # has_many :user_conversations, dependent: :destroy
+    # has_many :conversations, through: :user_conversations
     has_many :messages
     
 

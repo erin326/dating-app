@@ -1,5 +1,14 @@
 import { useEffect, useState } from 'react';
-function Message({mes, message, match, user, selectedMatch, lastElement}) {
+function Message({body, user, id, selectedConvo, message}) {
+
+ console.log(message);
+    // useEffect(() => {
+    //     fetch(`api/conversations/${selectedConvo.id}/messages`)
+    //     .then((r) => r.json())
+    //     .then((messages) => console.log(messages))
+
+    // }, []);
+
     // console.log(mes)
     // console.log(selectedMatch.username);
     // console.log(user);
@@ -45,11 +54,13 @@ function Message({mes, message, match, user, selectedMatch, lastElement}) {
     
     return(
         <>
-        <div className='user-messages'>
-        <strong>{user.username}</strong>
-        <p>{ mes.body}</p>
+        <div  >
+            <article style={
+            user.id === message.user_id ? {textAlign: 'right', padding: '20px'} : {textAlign: 'left', padding: '20px'}
+             }>    
+            <p >{body}</p>
+            </article>
         
-        {/* {lastElement  ? lastElement : mes.body} */}
     
         </div>
     

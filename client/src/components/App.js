@@ -10,7 +10,7 @@ import Matches from './Matches';
 import MessageForm from '../pages/MessageForm'
 import ConversationList from './ConversationList';
 import Match from '../pages/Match';
-import {StreamChat} from 'stream-chat'
+
 
 // import Conversation from './Conversation';
 
@@ -19,7 +19,7 @@ import {StreamChat} from 'stream-chat'
 
 // import './App.css';
 
-function App() {
+function App({}) {
 
   // require('react-dom');
   // window.React2 = require('react');
@@ -125,7 +125,7 @@ function App() {
 
           </Route>
           <Route exact path='/message' element={<MessageForm user={user} />}></Route>
-          {/* <Route exact path ='/convos' element={<ConversationList user={user}/>}></Route>  */}
+          <Route exact path ='/convos' element={<ConversationList user={user} />}></Route> 
           <Route exact path='/' element={<UserHomePage user={user} setUser={setUser}/>}>
           </Route>
         </Routes>

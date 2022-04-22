@@ -11,14 +11,13 @@ import ActionCable  from 'actioncable';
 
 
 
-// const CableApp = {};
-// CableApp.cable = actionCable.createConsumer(APP_CABLE_URL);
+
 
 ReactDOM.render(
   <BrowserRouter>
     <React.StrictMode>
      
-        <App/>
+        <App />
      
     </React.StrictMode>
   </BrowserRouter>,

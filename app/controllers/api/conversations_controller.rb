@@ -1,8 +1,9 @@
 class Api::ConversationsController < ApplicationController
 
     def index 
-        current_user = User.find_by(id: session[:user_id])
-        conversations = Conversation.where(sender_id: current_user.id)
+        # current_user = User.find_by(id: session[:user_id])
+        # conversations = Conversation.where(sender_id: current_user.id)
+        conversations = Conversation.where("recipient_id = ? OR sender_id = ?", session[:user_id], session[:user_id])
         # conversations = Conversation.all
         render json: conversations
 
@@ -28,24 +29,30 @@ class Api::ConversationsController < ApplicationController
         # end
             
 
-        conversation = Conversation.new(conversation_params)
+        conversation = Conversation.create(conversation_params)
 
-        if conversation.save 
-            ownership1 = UserConversation.create(conversation_id: conversation.id, user_id: conversation.sender_id)
-            # ownership1.conversation_id = conversation.id
-            # ownership1.user_id = params[:user_id]
-            # ownership1.save
-            ownership2 = UserConversation.create(conversation_id: conversation.id, user_id: conversation.recipient_id)
-            ownership2.conversation_id = conversation.id
-            ownership2.user_id = params[:recipient_id]
-            ownership2.save
-            ownership1.save 
-            ownership2.save
-            conversation.users << [ownership1, ownership2]
+        # if conversation.save 
+        #     ownership1 = UserConversation.create(conversation_id: conversation.id, user_id: conversation.sender_id)
+        #     # ownership1.conversation_id = conversation.id
+        #     # ownership1.user_id = params[:user_id]
+        #     # ownership1.save
+        #     ownership2 = UserConversation.create(conversation_id: conversation.id, user_id: conversation.recipient_id)
+        #     ownership2.conversation_id = conversation.id
+        #     ownership2.user_id = params[:recipient_id]
+        #     ownership2.save
+        #     ownership1.save 
+        #     ownership2.save
+        #     conversation.users << [ownership1, ownership2]
             
+        # end
+        # conversation.save
+        # render json: conversation
+        
+        if conversation.valid? 
+            render json: conversation, status: :created
+        else
+            render json: {errors: conversation.errors.full_messages}, status: :unprocessable_entity
         end
-        conversation.save
-        render json: conversation
             
 
         

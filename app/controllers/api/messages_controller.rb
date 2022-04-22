@@ -1,22 +1,27 @@
 class Api::MessagesController < ApplicationController
 
     def create 
-        message = Message.new(message_params)
-        current_user = User.find_by(id: session[:user_id]) 
-        message.user_id = current_user.id
-        message.save
+        # message = Message.new(message_params)
+        # current_user = User.find_by(id: session[:user_id]) 
+        # message.user_id = current_user.id
+        # message.save
 
-        conversation = Conversation.find(message_params[:conversation_id])
-        conversation.messages << message
-        current_user.messages << message
-        # conversation.messages.order(created_at: :desc)
-        if message.valid? 
+        # conversation = Conversation.find(message_params[:conversation_id])
+        # conversation.messages << message
+        # current_user.messages << message
+        # # conversation.messages.order(created_at: :desc)
+        # if message.valid? 
 
-         render json: conversation.messages, status: :created
-        else
-            render json: {errors: message.errors.full_messages}, status: :unprocessable_entity
-        end
+        #  render json: conversation.messages, status: :created
+        # else
+        #     render json: {errors: message.errors.full_messages}, status: :unprocessable_entity
+        # end
 
+        message = Message.create!(message_params)
+        conversation = Conversation.find(params[:conversation_id])
+        
+        ConversationsChannel.broadcast_to(conversation, {type: 'new_message', new_message: message})
+        render json: message
      
 
 

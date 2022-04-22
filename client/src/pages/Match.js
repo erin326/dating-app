@@ -1,70 +1,72 @@
 import {Card, CardDescription, CardHeader, Image} from 'semantic-ui-react'
 import {Link} from 'react-router-dom';
-import MessageForm from '../pages/MessageForm'
+import ConversationList from '../components/ConversationList';
+import MessageForm from './MessageForm';
+// import MessageForm from '../pages/MessageForm'
 
 
 import {useState, useEffect} from 'react';
 
 
-function Match({user, selectedMatch, match, convos, setShowInfo}) {
+function Match({user, selectedMatch, match, convos, setShowInfo, selectedConvo}) {
     // console.log(selectedMatch);
 
  
-    const [messages, setMessages] = useState([]);
-    const [conversation, setConversation] = useState({});
-    console.log(selectedMatch);
+//     const [messages, setMessages] = useState([]);
+//     const [conversation, setConversation] = useState({});
+//     console.log(selectedMatch);
 
-// // console.log(selectedMatch);
-    useEffect(() => {
-        console.log(selectedMatch);
-        if(selectedMatch) {
-            const thisConvo = convos.find((c) => {
-                return c.sender_id === user.id && c.recipient_id === selectedMatch.id
+// // // console.log(selectedMatch);
+//     useEffect(() => {
+//         console.log(selectedMatch);
+//         if(selectedMatch) {
+//             const thisConvo = convos.find((c) => {
+//                 return c.sender_id === user.id && c.recipient_id === selectedMatch.id
                 
-            })
-            setConversation(thisConvo);
-            // if(thisConvo) {
-            //     getMatchConvo(selectedMatch)
-            // }
+//             })
+//             setConversation(thisConvo);
+//             // if(thisConvo) {
+//             //     getMatchConvo(selectedMatch)
+//             // }
        
-            console.log(conversation)
+//             console.log(conversation)
 
-        }
+//         }
    
          
             
       
     
    
-        // openConvo(selectedMatch, conversation);
+//         // openConvo(selectedMatch, conversation);
         
 
-    }, [selectedMatch])
+//     }, [selectedMatch])
 
-    function startChat(matchObj) {
+    // function startChat(matchObj) {
    
      
-        if(conversation) {
-        fetch(`api/conversations`, {
-                method: "POST",
-                headers: {
+    //     if(conversation) {
+    //     fetch(`api/conversations`, {
+    //             method: "POST",
+    //             headers: {
                     
-                    "Content-Type": "application/json",
-                    "Accept": 'application/json'
-                },
-                body: JSON.stringify({recipient_id: matchObj.id, sender_id: user.id})
-            })
-        }
-        // }else {
-        //         fetch(`api/conversations/${conversation.id}/messages`)
-        //         .then((r) => r.json())
-        //         .then((data) => setMessages(data))
+    //                 "Content-Type": "application/json",
+    //                 "Accept": 'application/json'
+    //             },
+    //             body: JSON.stringify({recipient_id: matchObj.id, sender_id: user.id})
+    //         })
+    //     }
+    //     // }else {
+    //     //         fetch(`api/conversations/${conversation.id}/messages`)
+    //     //         .then((r) => r.json())
+    //     //         .then((data) => setMessages(data))
         
-        // }
+    //     // }
        
-        console.log(conversation);
+    //     console.log(conversation);
 
-    }
+    // }
     
     // const [matchConvo, setMatchConvo] = useState([])
     // const [matchMessages, setMatchMessages] = useState([]);
@@ -100,7 +102,24 @@ function Match({user, selectedMatch, match, convos, setShowInfo}) {
     //         // console.log(conversation);
 
     // }
+    // console.log(selectedConvo);
  
+      function createConvo(match) {
+        fetch(`api/conversations`, {
+            method: "POST",
+            headers: {
+                "Content-Type" : 'application/json'
+            }, 
+            body: JSON.stringify({
+                sender_id: user.id, 
+                recipient_id: match.id
+            })
+        
+        })
+        .then((r) => r.json())
+        .then((c) => console.log(c))
+  
+      }
 
     return(
         <>
@@ -113,19 +132,21 @@ function Match({user, selectedMatch, match, convos, setShowInfo}) {
                 <Card.Description>
                 {selectedMatch.bio}
                 </Card.Description>
+             
                 </Card.Content>
                 {/* <Link to='/message' >Message</Link> */}
-                <button onClick={() => startChat(selectedMatch)}>Message</button>
+          
                 <MessageForm
         //  getMatch={getThisMatch} 
-          user={user} selectedMatch={selectedMatch} match={match} conversation={conversation}
+          user={user} selectedMatch={selectedMatch} match={match} 
+          selectedConvo={selectedConvo}
         //   setMessages={setMessages} messages={messages}
 
         //   matchConvo={matchConvo}  
           />
 
            
-                {/* <button onClick={() => openConvo(selectedMatch)}>get convo</button> */}
+                <button onClick={() => createConvo(selectedMatch)}>get convo</button>
         </Card>
         </>
     )
