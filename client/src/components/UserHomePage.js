@@ -5,13 +5,14 @@ function UserHomePage({user}) {
 
     console.log(user.lat, user.lon)
 
+    const userImage = user.user_image
     
     return (
         <>
-            <Card>
+            <Card className='card'>
                 <Card.Content>
                     <Card.Header>{user.username}</Card.Header>
-                    <Image src={user.user_image} alt='my-pic'></Image>
+                    <Image src={userImage} alt='my-pic'></Image>
                     <Card.Description>{user.age}</Card.Description>
                     <Card.Meta>{user.gender}
                     <br></br>

@@ -4,8 +4,10 @@ class Api::BrowseController < ApplicationController
         current_user = User.find_by(id: session[:user_id])
         # liked_user_ids = Like.where(user_id: current_user.id).map(&:liked_user_id)
         # liked_user_ids << current_user.id
-        users = User.where.not(id: current_user.id)
-        render json: users
+        # users = User.where.not(id: current_user.id)
+        # list = users.recommended_matches
+        list = current_user.recommended_matches.where.not(id: current_user.id)
+        render json: list
     end
 
     def approve

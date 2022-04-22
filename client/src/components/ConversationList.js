@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
-import Matches from './Matches';
+import MessageForm from '../pages/MessageForm';
+import MatchPage from './MatchPage';
 
 
 function ConversationList({user}) {
@@ -28,19 +29,22 @@ function ConversationList({user}) {
     return(
 
         <div>
-            {/* {convos.length > 0 ? ( */}
+            {convos.length > 0 ? (
                 <><section>
                     {convos.map((convo) => (
-                        <><button key={convo.id} onClick={() => setSelectedConvo(convo)}>{convo.recipient.username}</button><section>
+                        <><button key={convo.id} onClick={() => setSelectedConvo(convo)}>  {user.id !== convo.recipient.id ? convo.recipient.username : convo.sender.username}</button>
+                        {/* <section>
                             <h2>
                                 {user.id !== convo.recipient.id ? convo.recipient.username : convo.sender.username}
                             </h2>
-                        </section></>
+                        </section> */}
+                        </>
                     ))}
                 </section>
-                <Matches user={user} selectedConvo={selectedConvo} /></>
+                <MessageForm user={user} selectedConvo={selectedConvo} />
+              </>
              
-            {/* // ) :null } */}
+            ) :null } 
  
         </div>
     )

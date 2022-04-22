@@ -8,10 +8,10 @@ import Match from '../pages/Match';
 // import { Widget } from 'react-chat-widget';
 // import 'react-chat-widget/lib/styles.css';
 
-function MatchList({match, user, selectedConvo}) {
+function MatchList({match, user, selectedConvo, selectedMatch, setSelectedMatch}) {
 
     const [showInfo, setShowInfo] = useState(false);
-    const [selectedMatch, setSelectedMatch] = useState({});
+    // const [selectedMatch, setSelectedMatch] = useState({});
 
 
     // const [convos, setConvos] = useState([]);
@@ -56,7 +56,7 @@ function MatchList({match, user, selectedConvo}) {
             
   
         })
-   
+       
     
 
     }
@@ -110,7 +110,8 @@ function MatchList({match, user, selectedConvo}) {
             // console.log(conversation);
 
     // }
-
+    
+  
 
    console.log('match');
     return(

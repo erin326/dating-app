@@ -2,17 +2,18 @@ import {useState, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom'
 
 
-function AccountSettings({user, 
+function AccountSettings({user, genderInterest, setGenderInterest, selectedMatch, setSelectedMatch
     // selectedUser, onSelectUser, setSelectedUser
 }) {
 
     const [gender, setGender] = useState('');
     const [bio, setBio] = useState('');
     const [age, setAge] = useState('');
-    const [genderInterest, setGenderInterest] = useState('Any/All');
+    // const [genderInterest, setGenderInterest] = useState('Any');
     const [image, setImage] = useState(null)
     const [userId, setUserId] = useState(0);
     const [errors, setErrors] = useState([]);
+    // const [selectedCategory, setSelectedCategory] = useState('Any')
 
     // const [location, setLocation] = useState([]);
     // const [userLatitude, setUserLatitude] = useState([]);
@@ -20,6 +21,7 @@ function AccountSettings({user,
 
     const navigate = useNavigate();
 
+ 
     // useEffect(() => {
     //     setUserId(selectedUser.id)
     //     // setUserName(selectedUser.username)
@@ -30,6 +32,14 @@ function AccountSettings({user,
        
     //   }, [selectedUser]);
 
+    useEffect(() => {
+        // setUserId(user.id)
+        setAge(user.age)
+        setGenderInterest(user.gender_interest)
+        setBio(user.bio)
+        setGender(user.gender)
+       
+      }, []);
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -50,7 +60,9 @@ function AccountSettings({user,
             })
             .then((r) => {
                 if(r.ok) {
+                 
                     navigate('/');
+                    window.location.reload()
                     console.log(r);
                     
                 }else {
@@ -69,7 +81,7 @@ function AccountSettings({user,
                 "Accept": "application/json",
             }, 
             body: JSON.stringify({
-                id: userId,
+                // id: userId,
                 gender,
                 bio,
                 age,
@@ -78,6 +90,8 @@ function AccountSettings({user,
         }).then((r) => {
             if (r.ok) {
                 navigate('/');
+                window.location.reload()
+
                 console.log(r)
                 
             }else{
@@ -157,7 +171,7 @@ function AccountSettings({user,
          <select  value={genderInterest} onChange={(e)=> setGenderInterest(e.target.value)}
          placeholder="enter"> 
             <option  value="none">Please choose</option>
-            <option value="All genders">Any/All</option>
+            <option value="Any">Any/All</option>
             <option value="Men">Men</option>
             <option value="Women">Women</option>
             

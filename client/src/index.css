@@ -5,11 +5,24 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* text-align: center; */
+  /* padding-left: 15px; */
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.title {
+  /* border-radius: 25px;
+  border: none; */
+  float: left;
+  color:black;
+  font-size: 70px;
+  /* text-align: center; */
+  /* background-color:rgb(232, 122, 190); */
+  /* padding:13px; */
 }
 
 /* #user-messages 
@@ -29,7 +42,7 @@ code {
   /* width: 100px;
   height: 60px; */
 
-#match-messages {
+/* #match-messages {
 
   position: absolute;
   top: 170px;
@@ -37,7 +50,7 @@ code {
   left:10px;
 
   
-}
+} */
 
 .message-container {
   width: 100%;
@@ -47,19 +60,39 @@ code {
 }
 
 
-.match-messages {
- 
+.nav-bar :link {
+  float:left;
+  text-align: center;
+  padding: 50px;
+  
+}
+.card {
+  text-align: center;
+    /* margin:35px; */
+  padding: 100px;
+  float:inline-end;
+  width: fit-content;
+  height: fit-content;
+  font-size: 20px;
+  /* background-color:#8cadc9;
+  border-radius: 25px;
+  border: solid 0.3em; */
+  /* border-color:rgb(0, 255, 55); */
+  border-width: 10px;
 
+}
+
+#logout-button {
+  position: absolute;
+  top:10px;
+  right:12px;
+  padding: 20px;
   color: white;
   text-align: center;
   font-size: 18px;
   border-radius: 25px;
-  margin-top: 5px;
-  width:fit-content;
-  padding:10px;
-
- 
-
-  background-color: rgb(85, 103, 208);
+  border: none;
+  background-color: rgb(67, 58, 126);
+  width: 100px;
+  height: 60px;
 }
-

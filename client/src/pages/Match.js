@@ -1,7 +1,6 @@
 import {Card, CardDescription, CardHeader, Image} from 'semantic-ui-react'
 import {Link} from 'react-router-dom';
 import ConversationList from '../components/ConversationList';
-import MessageForm from './MessageForm';
 // import MessageForm from '../pages/MessageForm'
 
 
@@ -104,7 +103,7 @@ function Match({user, selectedMatch, match, convos, setShowInfo, selectedConvo})
     // }
     // console.log(selectedConvo);
  
-      function createConvo(match) {
+      useEffect(() => {
         fetch(`api/conversations`, {
             method: "POST",
             headers: {
@@ -112,18 +111,18 @@ function Match({user, selectedMatch, match, convos, setShowInfo, selectedConvo})
             }, 
             body: JSON.stringify({
                 sender_id: user.id, 
-                recipient_id: match.id
+                recipient_id: selectedMatch.id
             })
         
         })
         .then((r) => r.json())
         .then((c) => console.log(c))
   
-      }
+      }, [selectedMatch])
 
     return(
         <>
-        <Card>
+        <Card className='card'>
                 <Card.Content>
                 <Card.Meta>{selectedMatch.gender}
                 <br></br>
@@ -136,18 +135,20 @@ function Match({user, selectedMatch, match, convos, setShowInfo, selectedConvo})
                 </Card.Content>
                 {/* <Link to='/message' >Message</Link> */}
           
-                <MessageForm
+
+
+           
+                {/* <button onClick={() => createConvo(selectedMatch)}>get convo</button> */}
+        </Card>
+
+                        {/* <MessageForm
         //  getMatch={getThisMatch} 
           user={user} selectedMatch={selectedMatch} match={match} 
           selectedConvo={selectedConvo}
         //   setMessages={setMessages} messages={messages}
 
         //   matchConvo={matchConvo}  
-          />
-
-           
-                <button onClick={() => createConvo(selectedMatch)}>get convo</button>
-        </Card>
+          /> */}
         </>
     )
 }

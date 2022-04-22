@@ -1,7 +1,7 @@
 import {Card, CardDescription, Image} from 'semantic-ui-react'
 import {useState, useEffect} from 'react';
 
-function UserCard({otherUser, slideRight, user}) {
+function BrowseCard({otherUser, slideRight, user}) {
   
     const [distance, setDistance] = useState(0);
     const [errors, setErrors] = useState([]);
@@ -94,7 +94,7 @@ function UserCard({otherUser, slideRight, user}) {
 
     return(
         <>
-              <Card>
+              <Card className='card'>
                 <Card.Content>
                     <Card.Header>{otherUser.username}</Card.Header>
                     <Image src={otherUser.user_image} alt='my-pic'></Image>
@@ -122,4 +122,4 @@ function UserCard({otherUser, slideRight, user}) {
     )
 }
 
-export default UserCard;
+export default BrowseCard;

@@ -14,31 +14,35 @@ function NavBar({user, setUser}) {
     }
     
     return (
-        <>
+        <div >
          <h3 id="welcome-nav">Welcome, {user.username}!</h3>
-
-        <h1 className='title'>
+         <h1 className='title'>
             <Link to='/'>Love</Link>
-        </h1>
-        <nav>
+            </h1>
+            <section className='nav-bar'>
+
+            <nav>
             <button id='logout-button' onClick={handleLogout}>Logout</button>
-        </nav>
-        <nav>
-            <Link to='/settings' id='account-settings'>Settings</Link>
-        </nav> 
-        <nav>
-            <Link to='/browse' id='browse'>Browse</Link>
-        </nav>
-        <nav>
-            <Link to='/matches' id='matches'>
-            Matches</Link>
-        </nav>
-        <nav>
-            <Link to ='/convos' >Chats</Link>
-        </nav>
+             </nav>
+         
+                 <nav>
+                    <Link to='/browse' id='browse'>Browse</Link>
+                </nav>
+                <nav>
+                    <Link to='/matches' id='matches'>
+                    Matches</Link>
+                </nav>
+                <nav>
+                    <Link to ='/convos' >Chats</Link>
+                </nav>
+                <nav>
+                    <Link to='/settings' id='account-settings'>Settings</Link>
+                </nav> 
+                </section>
+            
 
          
-        </>
+        </div>
     )
 
 }

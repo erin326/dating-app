@@ -1,7 +1,8 @@
 import {useState, useEffect} from 'react';
-import UserCard from './UserCard';
+import Match from '../pages/Match';
+import BrowseCard from './BrowseCard';
 
-function Browse({user}) {
+function Browse({user, genderInterest}) {
 
     const [allUsers, setAllUsers] = useState([]);
     const [index, setIndex] = useState(0);
@@ -16,8 +17,17 @@ function Browse({user}) {
   
       };
 
-    const displayUsers = allUsers.map((thisUser) => (
-            <UserCard key={user.id} user={user} otherUser={thisUser} 
+    const filteredUsers = allUsers.filter((user) => {
+        if(genderInterest === 'Any') {
+            return true;
+
+        }else {
+            return user.gender_interest === genderInterest
+        }
+    })
+
+    const displayUsers = filteredUsers.map((thisUser) => (
+            <BrowseCard key={thisUser.id} user={user} otherUser={thisUser} 
             slideRight={slideRight}
             />
             
@@ -37,9 +47,14 @@ function Browse({user}) {
     useEffect(() => {
         fetch('/api/browse')
         .then((r) => r.json())
-        .then((users) => setAllUsers(users))
+        .then((users) => {
+            console.log(users)
+            setAllUsers(users)
+        })
         
     }, []);
+
+    
 
    
 

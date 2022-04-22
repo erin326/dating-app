@@ -4,6 +4,9 @@ class Api::ConversationsController < ApplicationController
         # current_user = User.find_by(id: session[:user_id])
         # conversations = Conversation.where(sender_id: current_user.id)
         conversations = Conversation.where("recipient_id = ? OR sender_id = ?", session[:user_id], session[:user_id])
+        # conversations.each do |c| 
+        #     c.messages.order(created_at: :desc)
+        # end
         # conversations = Conversation.all
         render json: conversations
 

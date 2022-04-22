@@ -6,10 +6,10 @@ import UserHomePage from './UserHomePage';
 import NavBar from './NavBar';
 import AccountSettings from './AccountSettings';
 import Browse from './Browse';
-import Matches from './Matches';
 import MessageForm from '../pages/MessageForm'
 import ConversationList from './ConversationList';
 import Match from '../pages/Match';
+import MatchPage from './MatchPage';
 
 
 // import Conversation from './Conversation';
@@ -35,9 +35,10 @@ function App({}) {
     const [userLongitude, setUserLongitude] = useState([]);
     const [loggedIn, setLoggedIn] = useState(false)
     const [conversation, setConversation] = useState({});
-    
+    const [genderInterest, setGenderInterest] = useState('Any');
 
-    
+    const [selectedMatch, setSelectedMatch] = useState({});
+    console.log(user);
 
   useEffect(() => {
     fetch('/api/me').then((r) => {
@@ -68,7 +69,8 @@ function App({}) {
      if('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
     
-        if(user.lat !== 41.982398 || user.lon !== -87.660815) {
+        // if(user.lat !== 41.982398 || user.lon !== -87.660815) 
+        // {
               console.log(position.coords.latitude,  
                   position.coords.longitude);
                   setUserLatitude(position.coords.latitude)
@@ -91,7 +93,7 @@ function App({}) {
               .then((r) => r.json())
               .then((loc) => console.log(loc))
         }
-      })
+      )
 
   
       console.log(userLatitude, userLongitude, 'state');
@@ -113,19 +115,19 @@ function App({}) {
       <NavBar user={user} setUser={setUser} />
       <main>
         <Routes>
-          <Route exact path= '/settings' element={<AccountSettings user={user}
+          <Route exact path= '/settings' element={<AccountSettings user={user} genderInterest={genderInterest} setGenderInterest={setGenderInterest} 
           //  onSelectUser={selectUser} 
           // selectedUser={selectedUser}
           // setSelectedUser={setSelectedUser} 
           />} ></Route>
-          <Route exact path ='/browse' element={<Browse user={user} />}></Route>
-          <Route exact path='/matches' element={<Matches user={user}  />} >
+          <Route exact path ='/browse' element={<Browse user={user} genderInterest={genderInterest} />}></Route>
+          <Route exact path='/matches' element={<MatchPage selectedMatch={selectedMatch} setSelectedMatch={selectedMatch} user={user}  />} >
           </Route>
           <Route exact path ='/match' element= {<Match />}>
 
           </Route>
           <Route exact path='/message' element={<MessageForm user={user} />}></Route>
-          <Route exact path ='/convos' element={<ConversationList user={user} />}></Route> 
+          <Route exact path ='/convos' element={<ConversationList key={user.username}  user={user} />}></Route> 
           <Route exact path='/' element={<UserHomePage user={user} setUser={setUser}/>}>
           </Route>
         </Routes>
