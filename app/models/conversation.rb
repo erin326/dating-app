@@ -9,7 +9,7 @@ class Conversation < ApplicationRecord
     validates_presence_of :sender_id,:recipient_id
     validates_uniqueness_of :sender_id, scope: :recipient_id
 
-    validates_uniqueness_of :recipient_id, scope: :sender_id
+    # validates_uniqueness_of :recipient_id, scope: :sender_id
 
 
 

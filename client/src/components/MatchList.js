@@ -8,10 +8,10 @@ import Match from '../pages/Match';
 // import { Widget } from 'react-chat-widget';
 // import 'react-chat-widget/lib/styles.css';
 
-function MatchList({match, user, selectedConvo, selectedMatch, setSelectedMatch}) {
+function MatchList({match, user, selectedConvo}) {
 
     const [showInfo, setShowInfo] = useState(false);
-    // const [selectedMatch, setSelectedMatch] = useState({});
+    const [selectedMatch, setSelectedMatch] = useState({});
 
 
     // const [convos, setConvos] = useState([]);

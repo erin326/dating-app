@@ -37,7 +37,7 @@ function App({}) {
     const [conversation, setConversation] = useState({});
     const [genderInterest, setGenderInterest] = useState('Any');
 
-    const [selectedMatch, setSelectedMatch] = useState({});
+    // const [selectedMatch, setSelectedMatch] = useState({});
     console.log(user);
 
   useEffect(() => {
@@ -121,7 +121,9 @@ function App({}) {
           // setSelectedUser={setSelectedUser} 
           />} ></Route>
           <Route exact path ='/browse' element={<Browse user={user} genderInterest={genderInterest} />}></Route>
-          <Route exact path='/matches' element={<MatchPage selectedMatch={selectedMatch} setSelectedMatch={selectedMatch} user={user}  />} >
+          <Route exact path='/matches' element={<MatchPage 
+          // selectedMatch={selectedMatch} setSelectedMatch={selectedMatch} 
+          user={user}  />} >
           </Route>
           <Route exact path ='/match' element= {<Match />}>
 

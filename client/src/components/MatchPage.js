@@ -4,7 +4,7 @@ import MatchList from './MatchList';
 
 
 
-function MatchPage({ selectedMatch, setSelectedMatch, user, selectedConvo}) {
+function MatchPage({  user, selectedConvo}) {
 
      console.log('matches');
 
@@ -19,7 +19,7 @@ function MatchPage({ selectedMatch, setSelectedMatch, user, selectedConvo}) {
     }, []);
 
     const displayMatches = matches.map((match) => (
-        <MatchList key={match.id} match={match} user={user} selectedConvo={selectedConvo} selectedMatch={selectedMatch} setSelectedMatch={setSelectedMatch} />
+        <MatchList key={match.id} match={match} user={user} selectedConvo={selectedConvo}  />
     ))
 
     return(
