@@ -38,6 +38,17 @@ code {
   padding: 8px;
   font-size: 24px;
   display: block;
+  margin: 10px;
+  }
+
+  .edit{
+    width:fit-content;
+    height: fit-content;
+    padding:40px;
+    margin: auto;
+    text-align: left;
+   
+
   }
 
 /* #user-messages 
@@ -73,28 +84,44 @@ code {
   /* flex-direction: column-reverse; */
 
 }
+.nav-bar{
+  float: right;
+}
 
 
-.nav-bar :link {
+/* .nav-bar :link {
   float:left;
   text-align: center;
   padding: 50px;
   
-}
-.card {
+} */
+.card-container {
   text-align: center;
-    /* margin:35px; */
+}
+
+.card {
+ margin-top: 100;
+  
   padding: 100px;
-  float:inline-end;
-  width: fit-content;
-  height: fit-content;
+  float:left;
+  width: 800px;
+  height: 600px;
   font-size: 20px;
+  padding: auto;
   /* background-color:#8cadc9;
   border-radius: 25px;
   border: solid 0.3em; */
   /* border-color:rgb(0, 255, 55); */
   border-width: 10px;
 
+}
+.image {
+  max-width: 460px;
+  max-height: 460px;
+  
+  position: relative;
+  border: solid 0.3em;
+  border-width: 5px; 
 }
 
 /* #logout-button {

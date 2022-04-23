@@ -17,7 +17,6 @@ function ConversationList({user}) {
         fetch(`api/conversations`)
         .then((r) => r.json())
         .then((convos) => {
-            // console.log(convos)
             setConvos(convos)
         })
         
@@ -28,25 +27,23 @@ function ConversationList({user}) {
 
     return(
 
-        <div>
+        <article className='sidebar'>
             {convos.length > 0 ? (
-                <><section>
+                <><div>
                     {convos.map((convo) => (
                         <><button key={convo.id} onClick={() => setSelectedConvo(convo)}>  {user.id !== convo.recipient.id ? convo.recipient.username : convo.sender.username}</button>
-                        {/* <section>
-                            <h2>
-                                {user.id !== convo.recipient.id ? convo.recipient.username : convo.sender.username}
-                            </h2>
-                        </section> */}
+                  
                         </>
                     ))}
-                </section>
-                <MessageForm user={user} selectedConvo={selectedConvo} />
+                </div>
+              
               </>
              
             ) :null } 
+            {convos ? null :    <MessageForm user={user} selectedConvo={selectedConvo} />}
+           
  
-        </div>
+        </article>
     )
 }
 

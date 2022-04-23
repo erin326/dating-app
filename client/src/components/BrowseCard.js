@@ -54,26 +54,12 @@ function BrowseCard({otherUser, slideRight, user}) {
        .then((data) => console.log(data))
        slideRight();
 
-    //    .then((r) => {
-    //     //    if(r.ok) {
-    //            r.json()
-    //            .then((data)=> console.log(data))
-        //    }
-        //    else{
-        //        r.json().then((error) => setErrors(error.errors))
-        //    }
-        
-    //    })
+
        
    }
 
        function decline() {
-        // const nextIndex = index - 1;
-        // if (nextIndex < 0) {
-        //   setIndex(displayUsers.length - 1); // returns last index of images array if index is less than 0
-        // } else {
-        //   setIndex(nextIndex);
-        // }
+  
             fetch(`api/decline/${otherUser.id}`, {
                 method: "POST", 
                 headers: {
@@ -103,6 +89,7 @@ function BrowseCard({otherUser, slideRight, user}) {
                     <br></br>
                     Interested in: {otherUser.gender_interest}
                     </Card.Meta>
+                    
                     <CardDescription>{otherUser.bio}
                     <button onClick={() => getDistance(user.lat, user.lon, otherUser.lat, otherUser.lon)}>See Distance</button>
                     {showDistance ? <p>{distance} miles away</p>  : null}

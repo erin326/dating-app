@@ -47,9 +47,10 @@ function LoginForm({onLogin}) {
             onChange={(e) => setPassword(e.target.value)}
             ></input>
             <button  className="button" type='submit'>Login</button>
-            {/* <p>{errors.map((error) => (
+            {errors? <p>{errors.map((error) => (
                 <li>{error}</li>
-            ))}</p> */}
+            ))}</p> : null
+            } 
         </form>
         </>
     )

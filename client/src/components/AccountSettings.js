@@ -2,37 +2,21 @@ import {useState, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom'
 
 
-function AccountSettings({user, genderInterest, setGenderInterest, setUser, selectedMatch, setSelectedMatch
-    // selectedUser, onSelectUser, setSelectedUser
+function AccountSettings({user, genderInterest, setGenderInterest, setUser
 }) {
 
     const [gender, setGender] = useState('');
     const [bio, setBio] = useState('');
     const [age, setAge] = useState('');
-    // const [genderInterest, setGenderInterest] = useState('Any');
     const [image, setImage] = useState(null)
-    const [userId, setUserId] = useState(0);
     const [errors, setErrors] = useState([]);
-    // const [selectedCategory, setSelectedCategory] = useState('Any')
 
-    // const [location, setLocation] = useState([]);
-    // const [userLatitude, setUserLatitude] = useState([]);
-    // const [userLongitude, setUserLongitude] = useState([]);
 
     const navigate = useNavigate();
 
    
 
- 
-    // useEffect(() => {
-    //     setUserId(selectedUser.id)
-    //     // setUserName(selectedUser.username)
-    //     setAge(selectedUser.age)
-    //     setBio(selectedUser.bio)
-    //     setGender(selectedUser.gender)
-    //     setGenderInterest(selectedUser.gender_interest)
-       
-    //   }, [selectedUser]);
+
 
     useEffect(() => {
         // setUserId(user.id)
@@ -112,54 +96,12 @@ function AccountSettings({user, genderInterest, setGenderInterest, setUser, sele
     } 
     }
 
-    // function getLocation() {
-    //     if('geolocation' in navigator) {
-    //         navigator.geolocation.getCurrentPosition((position) => {
-                
-    //                 console.log(position.coords.latitude,  
-    //                     position.coords.longitude);
-    //                     setUserLatitude(position.coords.latitude)
-    //                     setUserLongitude(position.coords.longitude)
-
-                
-    //         //    if(userLatitude, userLongitude) {
-    //             fetch(`api/users/${user.id}`, {
-    //                 method: "PATCH",
-    //                 headers: {
-    //                     "Content-Type" : "application/json",
-    //                     "Accept" : "application/json"
-    //                 },
-    //                 body: JSON.stringify({
-    //                     // location: location
-    //                     lat: userLatitude,
-    //                     lon: userLongitude
-                       
-    //                     })
-    //             })
-    //             .then((r) => r.json())
-    //             .then((loc) => console.log(loc))
-            
-    //         })
-   
-        
-    //         console.log(userLatitude, userLongitude, 'state');
-        
-        
-    //     }
-    // }
+  
    
 
     return(
-        <>
-        {/* <label>Username: </label>
-        <input 
-        type="text"
-        id="username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        ></input> */}
-        {/* <button onClick={getLocation}>Add Location</button> */}
-        {/* <button onClick={showLocation}>show Location</button> */}
+        <div className='edit'>
+  
 
         <form onSubmit={handleSubmit}>
         <label>Gender: </label>
@@ -169,7 +111,7 @@ function AccountSettings({user, genderInterest, setGenderInterest, setUser, sele
         value={gender}
         onChange={(e) => setGender(e.target.value)}
         ></input>
-      
+      <br></br>
          <label>Age: </label>
         <input 
         type="text"
@@ -177,7 +119,7 @@ function AccountSettings({user, genderInterest, setGenderInterest, setUser, sele
         value={age}
         onChange={(e) => setAge(e.target.value)}
         ></input>
-       
+       <br></br>
          <label>Interested in: </label>
          <select  value={genderInterest} onChange={(e)=> setGenderInterest(e.target.value)}
          placeholder="enter"> 
@@ -187,18 +129,14 @@ function AccountSettings({user, genderInterest, setGenderInterest, setUser, sele
             <option value="Women">Women</option>
             
         </select>
-        
-        {/* <input 
-        type="text"
-        id="gender_interest"
-        value={genderInterest}
-        onChange={(e) => setGenderInterest(e.target.value)}
-        ></input> */}
+        <br></br>
+       
         <input id="choose-file"
             type="file"
             accept="image/*" 
             onChange={(e) => setImage(e.target.files[0])}
         ></input>
+        <br></br>
           <label>Bio: </label>
         <textarea 
         type="text"
@@ -206,8 +144,7 @@ function AccountSettings({user, genderInterest, setGenderInterest, setUser, sele
         value={bio}
         onChange={(e) => setBio(e.target.value)}
         ></textarea>
-        {/* <input type='text' value ={}>
-        Location: </input> */}
+        <br></br>
         <button className='button' type='submit' >Submit</button>
 
 
@@ -215,12 +152,11 @@ function AccountSettings({user, genderInterest, setGenderInterest, setUser, sele
         <button type ='submit' onClick={() => handleDeleteAccount(user.id)}>Delete Account</button>
         {errors ? errors.map((err) => (<p>{err}</p>)) 
           : null}
-        {/* <p>{userLatitude} {userLongitude}</p>
-        <p>{location}</p> */}
+  
 
 
 
-        </>
+        </div>
     )
 }
 
