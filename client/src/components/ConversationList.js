@@ -36,6 +36,7 @@ function ConversationList({user}) {
                         </>
                     ))}
                 </div>
+                
                 <MessageForm user={user} selectedConvo={selectedConvo} />
               </>
              

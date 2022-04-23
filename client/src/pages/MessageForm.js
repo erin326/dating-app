@@ -32,8 +32,7 @@ function MessageForm({user, selectedConvo }) {
 
     useEffect(() => {
         if(selectedConvo) {
-            const socket = new WebSocket("wss://fast-reaches-73823.herokuapp.com/cable"
-            )
+            const socket = new WebSocket("wss://fast-reaches-73823.herokuapp.com/cable")
            
             socket.addEventListener("open", (event) => {
                 const message = {
@@ -77,6 +76,9 @@ function MessageForm({user, selectedConvo }) {
           const sorted = displayMessage.slice().sort((a, b) => b.props.createdAt - a.props.createdAt)
      
     return(
+        
+        <> 
+        { selectedConvo ? 
 
         <div style={{flexDirection: 'column-reverse', display: 'flex'}}>
  
@@ -97,10 +99,12 @@ function MessageForm({user, selectedConvo }) {
         </form>
         {sorted}
        
-   
+        
       
         
         </div>
+            :null}
+        </>
     )
 }
 
