@@ -32,7 +32,7 @@ function MessageForm({user, selectedConvo }) {
 
     useEffect(() => {
         if(selectedConvo) {
-            const socket = new WebSocket(  "wss://fast-reaches-73823.herokuapp.com/cable"
+            const socket = new WebSocket( "ws://localhost:3000/cable"
             )
            
             socket.addEventListener("open", (event) => {

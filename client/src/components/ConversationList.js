@@ -36,12 +36,10 @@ function ConversationList({user}) {
                         </>
                     ))}
                 </div>
-              
+                <MessageForm user={user} selectedConvo={selectedConvo} />
               </>
              
             ) :null } 
-            {convos ? null :    <MessageForm user={user} selectedConvo={selectedConvo} />}
-           
  
         </article>
     )

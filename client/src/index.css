@@ -25,13 +25,7 @@ code {
   /* padding:13px; */
 }
 .sidebar {
-  height: 100%;
-  width: 150px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  padding-top: 40px;
-  background-color: lightblue;
+  float:left;
   }
   
   .sidebar div {
