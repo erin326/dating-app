@@ -14,7 +14,7 @@ function UserHomePage({user}) {
             <Card className='card'>
                 <Card.Content>
                     <Card.Header>{user.username}</Card.Header>
-                    <Image src={userImage} alt='my-pic'></Image>
+                    <Image src={userImage} alt='Add a pic!'></Image>
                     <Card.Description>{user.age}</Card.Description>
                     <Card.Meta>{user.gender}
                     <br></br>

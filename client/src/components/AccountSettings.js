@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom'
 
 
-function AccountSettings({user, genderInterest, setGenderInterest, setUser
+function AccountSettings({user, genderInterest, setGenderInterest, 
 }) {
 
     const [gender, setGender] = useState('');
@@ -18,23 +18,23 @@ function AccountSettings({user, genderInterest, setGenderInterest, setUser
 
 
 
-    useEffect(() => {
-        // setUserId(user.id)
-        setAge(user.age)
-        setGenderInterest(user.gender_interest)
-        setBio(user.bio)
-        setGender(user.gender)
+    // useEffect(() => {
+    //     // setUserId(user.id)
+    //     setAge(user.age)
+    //     setGenderInterest(user.gender_interest)
+    //     setBio(user.bio)
+    //     setGender(user.gender)
        
-      }, []);
+    //   }, [user]);
 
-      function handleDeleteAccount(id) {
-          prompt('Are you sure you want to delete your account?')
-          fetch(`api/users/${id}`, {
-              method: "DELETE"
-          })
-          navigate('/login')
-          setUser(null)
-      }
+    //   function handleDeleteAccount(id) {
+        
+    //       fetch(`api/users/${id}`, {
+    //           method: "DELETE"
+    //       })
+    //       navigate('/login')
+         
+    //   }
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -149,7 +149,7 @@ function AccountSettings({user, genderInterest, setGenderInterest, setUser
 
 
         </form>
-        <button type ='submit' onClick={() => handleDeleteAccount(user.id)}>Delete Account</button>
+        {/* <button type ='submit' onClick={() => handleDeleteAccount(user.id)}>Delete Account</button> */}
         {errors ? errors.map((err) => (<p>{err}</p>)) 
           : null}
   

@@ -103,14 +103,11 @@ function App({}) {
           </Route>
           <Route exact path='/message' element={<MessageForm user={user} />}></Route>
           <Route exact path ='/convos' element={<ConversationList key={user.id}  user={user} />}></Route> 
-          <Route exact path='/login' element={<Login />}></Route>
+          <Route exact path='/login' element={<Login  />}></Route>
           <Route exact path='/' element={<UserHomePage user={user} setUser={setUser}/>}>
           </Route>
         </Routes>
-        {errors? <p>{errors.map((error) => (
-                <li>{error}</li>
-            ))}</p> : null
-            } 
+    
       </main>
 
     
