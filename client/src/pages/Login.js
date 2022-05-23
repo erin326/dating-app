@@ -5,15 +5,12 @@ import SignupForm from '../components/SignupForm';
 
 function Login({onLogin}) {
 
-
     const [showLoginForm, setShowLoginForm] = useState(true);
 
  return (
     <div className="login-page">
         <h1>Love Finder</h1>
         <h3>Login or Sign Up to get started!</h3>
-
-  
 
     {showLoginForm ? (
         <>
@@ -23,7 +20,6 @@ function Login({onLogin}) {
             onClick={() => setShowLoginForm(false)}> Sign Up
             </button>
         </h3>
-
         </>
 
     ) : (
@@ -36,7 +32,6 @@ function Login({onLogin}) {
                 Log In
             </button>
         </p>
-        
         </>
     )}
     </div>

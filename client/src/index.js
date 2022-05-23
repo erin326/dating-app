@@ -16,7 +16,7 @@ import ActionCable  from 'actioncable';
 ReactDOM.render(
   <BrowserRouter>
     <React.StrictMode>
-     
+       
         <App />
      
     </React.StrictMode>

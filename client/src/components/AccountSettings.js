@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import {useNavigate} from 'react-router-dom'
 
 
@@ -14,28 +14,7 @@ function AccountSettings({user, genderInterest, setGenderInterest,
 
     const navigate = useNavigate();
 
-   
-
-
-
-    // useEffect(() => {
-    //     // setUserId(user.id)
-    //     setAge(user.age)
-    //     setGenderInterest(user.gender_interest)
-    //     setBio(user.bio)
-    //     setGender(user.gender)
-       
-    //   }, [user]);
-
-    //   function handleDeleteAccount(id) {
-        
-    //       fetch(`api/users/${id}`, {
-    //           method: "DELETE"
-    //       })
-    //       navigate('/login')
-         
-    //   }
-
+    
     function handleSubmit(e) {
         e.preventDefault();
 
@@ -45,8 +24,6 @@ function AccountSettings({user, genderInterest, setGenderInterest,
         formData.append('bio', bio)
         formData.append('gender_interest', genderInterest)
         formData.append('user_image', image)
-
-
 
         if(image) {
             fetch(`/api/users/${user.id}` , {
@@ -76,7 +53,6 @@ function AccountSettings({user, genderInterest, setGenderInterest,
                 "Accept": "application/json",
             }, 
             body: JSON.stringify({
-                // id: userId,
                 gender,
                 bio,
                 age,
@@ -85,24 +61,17 @@ function AccountSettings({user, genderInterest, setGenderInterest,
         }).then((r) => {
             if (r.ok) {
                 navigate('/');
-                window.location.reload()
-
-                console.log(r)
-                
+                window.location.reload()                
             }else{
                 r.json().then((error) => setErrors(error.errors));
             }
         });
-    } 
+     } 
     }
 
   
-   
-
     return(
         <div className='edit'>
-  
-
         <form onSubmit={handleSubmit}>
         <label>Gender: </label>
         <input 
@@ -146,16 +115,11 @@ function AccountSettings({user, genderInterest, setGenderInterest,
         ></textarea>
         <br></br>
         <button className='button' type='submit' >Submit</button>
-
-
         </form>
-        {/* <button type ='submit' onClick={() => handleDeleteAccount(user.id)}>Delete Account</button> */}
+        
         {errors ? errors.map((err) => (<p>{err}</p>)) 
           : null}
   
-
-
-
         </div>
     )
 }

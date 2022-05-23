@@ -2,10 +2,7 @@ import {useState, useEffect} from 'react';
 import MatchList from './MatchList';
 
 
-
-function MatchPage({  user, selectedConvo}) {
-
-     console.log('matches');
+function MatchPage({ user, selectedConvo}) {
 
     const [matches, setMatches] = useState([]);
 
@@ -13,7 +10,6 @@ function MatchPage({  user, selectedConvo}) {
         fetch(`api/matches`)
         .then((r) => r.json())
         .then((matches) => {
-            console.log(matches);
             setMatches(matches)})
     }, []);
 

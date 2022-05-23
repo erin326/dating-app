@@ -11,14 +11,7 @@ import ConversationList from './ConversationList';
 import Match from '../pages/Match';
 import MatchPage from './MatchPage';
 
-
-
-
-
-
 function App({}) {
-
-
 
   const [user, setUser] = useState(null);
   const [errors, setErrors] = useState([]);
@@ -27,27 +20,26 @@ function App({}) {
     const [userLongitude, setUserLongitude] = useState([]);
 
     const [genderInterest, setGenderInterest] = useState('Any');
+    const [alreadySwiped, setAlreadySwiped] = useState([]);
 
-    console.log(user);
-
+    // console.log(user.likes, 'likes');
+   
   useEffect(() => {
     fetch('/api/me').then((r) => {
       if (r.ok) {
         r.json().then((user) => {setUser(user)
-        console.log(user);
+        // console.log(Object.entries(user.likes))
+        const likes = user.likes.map((l) => l.liked_user_id)
+   
+        setAlreadySwiped(likes)
         });
       } else{ 
        r.json().then((error) => setErrors(error.errors))
       }
     })
   }, []);
-  
-
 
   if(!user) return <Login onLogin={setUser} />;
-
-
-
 
   if(!user.lat || !user.lon) {
     console.log(user);
@@ -57,9 +49,7 @@ function App({}) {
     
         setUserLatitude(position.coords.latitude)
         setUserLongitude(position.coords.longitude)
-
-
-          
+    
         fetch(`api/users/${user.id}`, {
             method: "PATCH",
             headers: {
@@ -75,16 +65,8 @@ function App({}) {
               .then((loc) => console.log(loc))
         }
       )
-  
-  
     }
-
-
   }
-
-  
-  
-  
 
   return (
     <div className="App">
@@ -94,7 +76,7 @@ function App({}) {
           <Route exact path= '/settings' element={<AccountSettings user={user} genderInterest={genderInterest} setGenderInterest={setGenderInterest} setUser={setUser} 
  
           />} ></Route>
-          <Route exact path ='/browse' element={<Browse user={user} genderInterest={genderInterest} />}></Route>
+          <Route exact path ='/browse' element={<Browse user={user} genderInterest={genderInterest} alreadySwiped={alreadySwiped} setAlreadySwiped={setAlreadySwiped}/>}></Route>
           <Route exact path='/matches' element={<MatchPage 
           user={user}  />} >
           </Route>
@@ -102,15 +84,12 @@ function App({}) {
 
           </Route>
           <Route exact path='/message' element={<MessageForm user={user} />}></Route>
-          <Route exact path ='/convos' element={<ConversationList key={user.id}  user={user} />}></Route> 
+          <Route exact path ='/convos' element={<ConversationList key={user.id} user={user} />}></Route> 
           <Route exact path='/login' element={<Login  />}></Route>
-          <Route exact path='/' element={<UserHomePage user={user} setUser={setUser}/>}>
+          <Route exact path='/' element={<UserHomePage user={user} setUser={setUser} genderInterest={genderInterest}/>}>
           </Route>
         </Routes>
-    
       </main>
-
-    
     </div>
   );
 }

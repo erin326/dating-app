@@ -2,12 +2,9 @@ import Message from '../components/Message';
 import {useEffect, useState} from 'react';
 
 
-
 function MessageForm({user, selectedConvo }) {
 
-
     const [messageBody, setMessageBody] = useState('');
-
     const [messages, setMessages] = useState([]);
 
  
@@ -23,16 +20,16 @@ function MessageForm({user, selectedConvo }) {
                 user_id: user.id,
                 conversation_id: selectedConvo.id
             }) 
-
-        });
-        
+        }); 
         setMessageBody('');
-
     }
 
     useEffect(() => {
         if(selectedConvo) {
-            const socket = new WebSocket("wss://fast-reaches-73823.herokuapp.com/cable")
+            const socket = new WebSocket(
+                // "ws://localhost:3000/cable"
+                "wss://lets-find-love.herokuapp.com/cable"
+                )
            
             socket.addEventListener("open", (event) => {
                 const message = {
@@ -47,12 +44,10 @@ function MessageForm({user, selectedConvo }) {
             
             socket.addEventListener("message", (event) => {
                 const data = JSON.parse(event.data);
-                if(data.type === "ping") return;
+                // if(data.type === "ping") return;
                 if(!data.message)return;
                 if(data.message.type === 'all_messages') { 
                     setMessages(data.message.messages);
-                    console.log(messages)
-
                 }
                 if(data.message.type === 'new_message') {
                     setMessages((currentMessages) => [
@@ -63,13 +58,8 @@ function MessageForm({user, selectedConvo }) {
                 }
              });
         }
-
-
     }, [selectedConvo]);
  
-  
-
-
     const displayMessage = messages.map((message) => (
         <Message  key={message.id} message={message} body={message.body}  user={user} selectedConvo={selectedConvo} createdAt={message.created_at} />
           ))
@@ -80,34 +70,19 @@ function MessageForm({user, selectedConvo }) {
         <> 
         { selectedConvo ? 
 
-        <div style={{flexDirection: 'column-reverse', display: 'flex'}}>
- 
-        
-        <form 
-                style={{flexDirection: 'column-reverse'}}
-
-        className='form'
-        onSubmit={handleSend}
-        >
-            
-       
-           <label htmlFor='newMessage'>New Message</label>
-            <input value={messageBody} onChange={(e) => setMessageBody(e.target.value)} placeholder="Type your message here"></input>
-            <button type='submit'>Send</button>
-           
-          
-        </form>
-        {sorted}
-       
-        
-      
-        
-        </div>
-            :null}
+            <div style={{flexDirection: 'column-reverse', display: 'flex'}}>
+    
+                <form style={{flexDirection: 'column-reverse'}} className='form' onSubmit={handleSend}>
+                <label htmlFor='newMessage'>New Message</label>
+                    <input value={messageBody} onChange={(e) => setMessageBody(e.target.value)} placeholder="Type your message here"></input>
+                    <button type='submit'>Send</button>
+                </form>
+                {sorted}
+            </div>
+        :null}
         </>
     )
 }
-
 
 
 export default MessageForm;

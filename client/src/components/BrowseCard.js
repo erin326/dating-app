@@ -1,12 +1,15 @@
 import {Card, CardDescription, Image} from 'semantic-ui-react'
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 
-function BrowseCard({otherUser, slideRight, user}) {
+function BrowseCard({otherUser, slideRight, user, alreadySwiped, setAlreadySwiped}) {
+  
+
+    console.log(alreadySwiped);
+    console.log(otherUser);
   
     const [distance, setDistance] = useState(0);
-    const [errors, setErrors] = useState([]);
+    // const [errors, setErrors] = useState([]);
     const [showDistance, setShowDistance] =useState(false)
-
 
     function getDistance(lat1, lon1, lat2, lon2) {
         setShowDistance(!showDistance)
@@ -19,13 +22,10 @@ function BrowseCard({otherUser, slideRight, user}) {
           Math.sin(dLon/2) * Math.sin(dLon/2)
           ; 
         const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-        const d = R * c; // Distance in km
+        const d = R * c; // Distance in miles
         console.log(d);
         const roundedNumber = round(d)
         setDistance(roundedNumber)
-
-        // setDistance(d);
-        // console.log(distance);
         console.log(lat1, lon1, lat2, lon2);
       }
       
@@ -36,6 +36,7 @@ function BrowseCard({otherUser, slideRight, user}) {
       function round(num) {
         var m = Number((Math.abs(num) * 100).toPrecision(2));
         const result = Math.round(m) / 100 * Math.sign(num);
+     
         console.log(result);
         return result
     }
@@ -45,21 +46,19 @@ function BrowseCard({otherUser, slideRight, user}) {
             method: "POST",
             headers: {
                 "Content-Type" : 'application/json',
-                
             },
              body: JSON.stringify({user_id: user.id, liked_user_id: otherUser.id})
         }
        )
        .then((r) => r.json())
        .then((data) => console.log(data))
+    //    setAlreadySwiped([alreadySwiped, ...otherUser.id])
+
        slideRight();
 
-
-       
    }
 
        function decline() {
-  
             fetch(`api/decline/${otherUser.id}`, {
                 method: "POST", 
                 headers: {
@@ -67,16 +66,11 @@ function BrowseCard({otherUser, slideRight, user}) {
                 }, 
                 body: JSON.stringify({user_id: user.id, liked_user_id: otherUser.id
                 })
-                
             })
             .then((r) => r.json())
             .then((data) => console.log(data))
             slideRight();
-
         };
-
-            
-   
 
     return(
         <>
@@ -89,7 +83,6 @@ function BrowseCard({otherUser, slideRight, user}) {
                     <br></br>
                     Interested in: {otherUser.gender_interest}
                     </Card.Meta>
-                    
                     <CardDescription>{otherUser.bio}
                     <button onClick={() => getDistance(user.lat, user.lon, otherUser.lat, otherUser.lon)}>See Distance</button>
                     {showDistance ? <p>{distance} miles away</p>  : null}
@@ -97,13 +90,11 @@ function BrowseCard({otherUser, slideRight, user}) {
                        
                     <button onClick={decline}>no</button> 
                     <button onClick={approve}>yes</button> 
-                
-
                 </Card.Content>
             </Card>
 
-            {errors ? errors.map((err) => (<p>{err}</p>)) 
-          : null}
+            {/* {errors ? errors.map((err) => (<p>{err}</p>)) 
+          : null} */}
            
         </>
     )

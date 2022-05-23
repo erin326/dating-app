@@ -2,40 +2,20 @@ class Api::BrowseController < ApplicationController
 
     def browse 
         current_user = User.find_by(id: session[:user_id])
-        # liked_user_ids = Like.where(user_id: current_user.id).map(&:liked_user_id)
-        # liked_user_ids << current_user.id
-        # users = User.where.not(id: current_user.id)
-        # list = users.recommended_matches
         list = current_user.recommended_matches.where.not(id: current_user.id)
         render json: list
     end
 
     def approve
-
         current_user = User.find_by(id: session[:user_id])
         liked_user = User.find(params[:id])
-
         liked_id = params[:id]
-        # logger.debug "User id for matching is #{user_id}"
-        
         new_like = Like.create(liked_user_id: liked_id, user_id: current_user.id, user_approves: true)
 
-        
-        
-        # new_like.user_id = current_user.id
-
-        # if new_like.save 
-
-            they_like_us = Like.where(user_id: liked_id, liked_user_id: current_user.id, user_approves: true)
+        they_like_us = Like.where(user_id: liked_id, liked_user_id: current_user.id, user_approves: true)
             if they_like_us.present?
-                new_like.like_account_approves = true 
-                
+                new_like.like_account_approves = true     
             end 
-            
-            # @they_like_us = existing_like > 0
-        # else 
-            #issue saving like - return error message
-        # end
         render json: new_like
     end
 
@@ -67,24 +47,5 @@ class Api::BrowseController < ApplicationController
         match = current_user.matches.find(params[:id])
         render json: match
     end
-
-    # def open_conversation
-    #     current_user = User.find_by(id: session[:user_id])
-    #     profile = User.find(params[:id])
-    #     likes = Like.where(user_id: current_user.id, liked_user_id: params[:id])
-    #     match = likes.first if likes.size > 0
-    #     conversation = Conversation.create(conversation_params)
-    #     message = conversation.messages.build 
-
-    #     if profile.present? 
-    #         render json: message
-    #     end
-    # end
-
-    # private
-    # def conversation_params
-    #     params.permit(:sender_id, :recipient_id)
-    # end
-
 
 end

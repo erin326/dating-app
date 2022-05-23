@@ -1,13 +1,8 @@
 import {Card, CardDescription, CardHeader, Image} from 'semantic-ui-react'
-
-
 import { useEffect} from 'react';
 
 
 function Match({user, selectedMatch}) {
-
-         
-            
   
       useEffect(() => {
         fetch(`api/conversations`, {
@@ -19,7 +14,6 @@ function Match({user, selectedMatch}) {
                 sender_id: user.id, 
                 recipient_id: selectedMatch.id
             })
-        
         })
         .then((r) => r.json())
         .then((c) => console.log(c))
@@ -34,10 +28,7 @@ function Match({user, selectedMatch}) {
           <br></br>
           {selectedMatch.age}
           </Card.Header>
-        
           <Image className='image' src={selectedMatch.user_image} alt='match-image'></Image>
-      
-        
                 <Card.Content>
                 <Card.Meta>{selectedMatch.gender}
                 <br></br>
@@ -46,12 +37,8 @@ function Match({user, selectedMatch}) {
                 <Card.Description>
                 {selectedMatch.bio}
                 </Card.Description>
-             
                 </Card.Content>
-            
         </Card>
-
-  
         </div>
     )
 }

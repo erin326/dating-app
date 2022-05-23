@@ -1,14 +1,11 @@
 import {Card, CardDescription, Image} from 'semantic-ui-react'
 
-function UserHomePage({user}) {
+function UserHomePage({user, genderInterest}) {
 
-    console.log(user.lat, user.lon)
-
-
-
-    const userImage = user.user_image
-
+    const userImage = user.user_image;
+    console.log(user);
     
+
     return (
         <>
             <Card className='card'>
@@ -24,10 +21,7 @@ function UserHomePage({user}) {
                 
                 </Card.Content>
             </Card>
-
-           
         </>
-
     )
 }
 

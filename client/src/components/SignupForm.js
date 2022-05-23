@@ -5,7 +5,6 @@ import {useNavigate} from 'react-router-dom'
 function SignUpForm({onLogin}) {
 
     const [username, setUsername] = useState('');
-
     const [password, setPassword] = useState('');
     const [passwordConfirmation, setPasswordConfirmation] = useState('');
     const [errors, setErrors] = useState([]);
@@ -45,7 +44,6 @@ function SignUpForm({onLogin}) {
         value={username}
         onChange={(e) => setUsername(e.target.value)}
         ></input>
-        
         <br></br>
         <label>Password: </label>
         <input

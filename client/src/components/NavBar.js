@@ -20,11 +20,9 @@ function NavBar({user, setUser}) {
             <Link to='/'>Love</Link>
             </h1>
             <section className='nav-bar'>
-
             <nav>
             <button id='logout-button' onClick={handleLogout}>Logout</button>
              </nav>
-         
                  <nav>
                     <Link to='/browse' id='browse'>Browse</Link>
                 </nav>
@@ -39,12 +37,8 @@ function NavBar({user, setUser}) {
                     <Link to='/settings' id='account-settings'>Settings</Link>
                 </nav> 
                 </section>
-            
-
-         
         </div>
     )
-
 }
 
 export default NavBar;

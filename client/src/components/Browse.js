@@ -1,11 +1,13 @@
 import {useState, useEffect} from 'react';
-import Match from '../pages/Match';
+// import Match from '../pages/Match';
+import Filter from './Filter';
 import BrowseCard from './BrowseCard';
 
-function Browse({user, genderInterest}) {
+function Browse({user, alreadySwiped, setAlreadySwiped}) {
 
     const [allUsers, setAllUsers] = useState([]);
     const [index, setIndex] = useState(0);
+
 
     useEffect(() => {
         fetch('/api/browse')
@@ -18,44 +20,61 @@ function Browse({user, genderInterest}) {
     }, []);
     
 
-
     const slideRight = () => {
         setIndex((index + 1) % displayUsers.length); // increases index by 1
-        
-  
+     
       };
 
- 
+    const filteredUsers = allUsers.filter((thisUser) => {
+        // console.log(thisUser.gender_interest.includes('Men'));
+       
+        if(user.gender_interest === 'Any' && user.gender === 'female') {
+            console.log(thisUser);
+            return thisUser.gender_interest === 'Any' || thisUser.gender_interest === 'Women'
+        } else if(user.gender_interest === 'Any' && user.gender === 'male') {
+            return thisUser.gender_interest === 'Any' || thisUser.gender_interest === 'Men'
+        } else if(user.gender_interest === 'Men' && user.gender === 'female') {
+            return thisUser.gender === 'male' && (thisUser.gender_interest === 'Women' || thisUser.gender_interest === 'Any') 
+            // return men
+        } else if(user.gender_interest === 'Men' && user.gender === 'male' ) {
+            return thisUser.gender === 'male' && thisUser.gender_interest === 'Men'
+            // return women 
+        } else if(user.gender_interest === 'Women' && user.gender === 'male') {
+            return thisUser.gender === 'female' && (thisUser.gender_interest === 'Men' || thisUser.genderInterest === 'Any')
+        }else if(user.gender_interest === 'Women' && user.gender === 'female') {
+            return thisUser.gender === 'female' && (thisUser.gender_interest === 'Women' || thisUser.gender_interest === 'Any/All')
+        }
+    })  
+    // console.log(filteredUsers);
 
-    const displayUsers = allUsers.map((thisUser) => (
-            <BrowseCard key={thisUser.id} user={user} otherUser={thisUser} 
-            slideRight={slideRight}
-            />
-            
+    
+
+    const displayUsers = filteredUsers.map((thisUser) =>  {
+        if (alreadySwiped.includes(thisUser.id)) {
+            return null
+        }else {
+            return (
+                <BrowseCard key={thisUser.id} user={user} otherUser={thisUser} 
+                slideRight={slideRight} alreadySwiped={alreadySwiped} setAlreadySwiped={setAlreadySwiped}
+                />
             )
+        }
+        
+    })
     
-        )
-  
-
-
-
-
     
-
-   
-
     return(
-        displayUsers.length > 0 ? (
+        <>
+     {   displayUsers.length > 0 ? (
             <div>
             {displayUsers[index]}
-      
           </div>
-    
-
         )
-        : null
-       
+        : null}
+        {/* <Filter allUsers={allUsers} user={user}/> */}
+        </>
     )
+    
 }
 
 export default Browse;

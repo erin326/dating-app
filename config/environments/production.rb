@@ -89,11 +89,13 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  
   config.action_cable.mount_path = "/cable"
 
-  config.action_cable_url = 'wss://fast-reaches-73823.herokuapp.com/cable'
+  config.action_cable_url = 'wss://lets-find-love.herokuapp.com/cable'
 
-  config.action_cable.allowed_request_origins = [ 'https://fast-reaches-73823.herokuapp.com', /http:\/\/fast-reaches-73823.herokuapp.com.*/ ]
+  config.action_cable.allowed_request_origins = [ 'https://lets-find-love.herokuapp.com', /http:\/\/lets-find-love.herokuapp.com.*/ ]
 
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector
