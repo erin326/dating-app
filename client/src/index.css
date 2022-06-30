@@ -5,6 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+   background-image: url('./css-images/art-1839006_1920.jpg');
+ 
+
   /* text-align: center; */
   /* padding-left: 15px; */
 }
@@ -20,7 +23,6 @@ code {
   float: left;
   color:black;
   font-size: 70px;
-  /* text-align: center; */
   /* background-color:rgb(232, 122, 190); */
   /* padding:13px; */
 }
@@ -41,10 +43,22 @@ code {
     padding:40px;
     margin: auto;
     text-align: left;
+  }
+
+  .login-page {
+    text-align: center;
+     /* background-image: url('./css-images/art-1839006_1920.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; */
    
 
   }
 
+  #login-title {
+    font-size: 70px;
+
+  }
 /* #user-messages 
   :not(:last-child) {
     margin-bottom: 12px;

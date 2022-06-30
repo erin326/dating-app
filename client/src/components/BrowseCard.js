@@ -85,7 +85,7 @@ function BrowseCard({otherUser, slideRight, user, alreadySwiped, setAlreadySwipe
                     </Card.Meta>
                     <CardDescription>{otherUser.bio}
                     <button onClick={() => getDistance(user.lat, user.lon, otherUser.lat, otherUser.lon)}>See Distance</button>
-                    {showDistance ? <p>{distance} miles away</p>  : null}
+                    {showDistance ? <p>{distance} miles away</p>  : <br></br>}
                     </CardDescription>
                        
                     <button onClick={decline}>no</button> 

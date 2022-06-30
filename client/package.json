@@ -20,6 +20,8 @@
     "react-scripts": "4.0.3",
     "stream-chat": "^6.3.0",
     "stream-chat-react": "^8.0.0",
+    "uuid": "^8.3.2",
+    "uuidv4": "^6.2.13",
     "web-vitals": "^1.1.2"
   },
   "scripts": {

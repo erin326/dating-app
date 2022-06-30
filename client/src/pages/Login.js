@@ -9,7 +9,7 @@ function Login({onLogin}) {
 
  return (
     <div className="login-page">
-        <h1>Love Finder</h1>
+        <h1 id='login-title'>Let's Find Love</h1>
         <h3>Login or Sign Up to get started!</h3>
 
     {showLoginForm ? (

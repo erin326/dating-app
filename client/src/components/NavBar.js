@@ -17,7 +17,7 @@ function NavBar({user, setUser}) {
         <div >
          <h3 id="welcome-nav">Welcome, {user.username}!</h3>
          <h1 className='title'>
-            <Link to='/'>Love</Link>
+            <Link to='/'>Let's Find Love</Link>
             </h1>
             <section className='nav-bar'>
             <nav>

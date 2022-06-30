@@ -9,8 +9,9 @@ class Api::ConversationsController < ApplicationController
 
 
     def create 
+        current_user = User.find_by(id: session[:user_id])
         conversation = Conversation.create(conversation_params)
-        if conversation.valid? 
+        if conversation.valid?
             render json: conversation, status: :created
         else
             render json: {errors: conversation.errors.full_messages}, status: :unprocessable_entity

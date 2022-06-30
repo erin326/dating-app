@@ -1,11 +1,13 @@
 import Message from '../components/Message';
 import {useEffect, useState} from 'react';
+import {v4 as uuidv4} from 'uuid';
 
 
 function MessageForm({user, selectedConvo }) {
 
     const [messageBody, setMessageBody] = useState('');
     const [messages, setMessages] = useState([]);
+    
 
  
     function handleSend(e) {
@@ -27,8 +29,8 @@ function MessageForm({user, selectedConvo }) {
     useEffect(() => {
         if(selectedConvo) {
             const socket = new WebSocket(
-                // "ws://localhost:3000/cable"
-                "wss://lets-find-love.herokuapp.com/cable"
+                "ws://localhost:3000/cable"
+                // "wss://lets-find-love.herokuapp.com/cable"
                 )
            
             socket.addEventListener("open", (event) => {
@@ -44,7 +46,7 @@ function MessageForm({user, selectedConvo }) {
             
             socket.addEventListener("message", (event) => {
                 const data = JSON.parse(event.data);
-                // if(data.type === "ping") return;
+                if(data.type === "ping") return;
                 if(!data.message)return;
                 if(data.message.type === 'all_messages') { 
                     setMessages(data.message.messages);
@@ -61,9 +63,12 @@ function MessageForm({user, selectedConvo }) {
     }, [selectedConvo]);
  
     const displayMessage = messages.map((message) => (
+      
         <Message  key={message.id} message={message} body={message.body}  user={user} selectedConvo={selectedConvo} createdAt={message.created_at} />
+        
           ))
-          const sorted = displayMessage.slice().sort((a, b) => b.props.createdAt - a.props.createdAt)
+          const sorted = displayMessage.slice().sort((a, b) => b.key - a.key)
+        //   console.log(sorted);
      
     return(
         
@@ -77,7 +82,7 @@ function MessageForm({user, selectedConvo }) {
                     <input value={messageBody} onChange={(e) => setMessageBody(e.target.value)} placeholder="Type your message here"></input>
                     <button type='submit'>Send</button>
                 </form>
-                {sorted}
+                {displayMessage}
             </div>
         :null}
         </>

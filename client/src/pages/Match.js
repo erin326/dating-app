@@ -4,21 +4,21 @@ import { useEffect} from 'react';
 
 function Match({user, selectedMatch}) {
   
-      useEffect(() => {
-        fetch(`api/conversations`, {
-            method: "POST",
-            headers: {
-                "Content-Type" : 'application/json'
-            }, 
-            body: JSON.stringify({
-                sender_id: user.id, 
-                recipient_id: selectedMatch.id
-            })
-        })
-        .then((r) => r.json())
-        .then((c) => console.log(c))
+    //   useEffect(() => {
+    //     fetch(`api/conversations`, {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type" : 'application/json'
+    //         }, 
+    //         body: JSON.stringify({
+    //             sender_id: user.id, 
+    //             recipient_id: selectedMatch.id
+    //         })
+    //     })
+    //     .then((r) => r.json())
+    //     .then((c) => console.log(c))
   
-      }, [selectedMatch])
+    //   }, [selectedMatch])
 
     return(
         <div className='card-container'>

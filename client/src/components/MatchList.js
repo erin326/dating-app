@@ -15,8 +15,80 @@ function MatchList({match, user, selectedConvo}) {
         .then((r) => r.json())
         .then((m) => {
             setSelectedMatch(m)
+           
         })
+        
+        
+        // if (selectedMatch) {
+        //     console.log(selectedMatch);
+        //     fetch(`api/conversations`, {
+        //         method: "POST",
+        //         headers: {
+        //             "Content-Type" : 'application/json'
+        //         }, 
+        //         body: JSON.stringify({
+        //             sender_id: user.id, 
+        //             recipient_id: selectedMatch.id
+        //         })
+        //     })
+        //     .then((r) => r.json())
+        //     .then((c) => console.log(c))
+
+        // }
     }
+    console.log(selectedConvo);
+    //    if (selectedMatch) {
+    //         console.log(selectedMatch);
+    //         fetch(`api/conversations`, {
+    //             method: "POST",
+    //             headers: {
+    //                 "Content-Type" : 'application/json'
+    //             }, 
+    //             body: JSON.stringify({
+    //                 sender_id: user.id, 
+    //                 recipient_id: selectedMatch.id
+    //             })
+    //         })
+    //         .then((r) => r.json())
+    //         .then((c) => console.log(c))
+
+    //     }
+          function startConvo(match) {
+           console.log(user.conversation);
+            if(!selectedConvo) {
+                fetch(`api/conversations`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type" : 'application/json'
+                    }, 
+                    body: JSON.stringify({
+                        sender_id: user.id, 
+                        recipient_id: match.id
+                    })
+                })
+                .then((r) => r.json())
+                .then((c) => console.log(c))
+            }
+   
+  
+      }
+
+
+    console.log(selectedMatch);
+    // function startConvo() {
+    //     fetch(`api/conversations`, {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type" : 'application/json'
+    //         }, 
+    //         body: JSON.stringify({
+    //             sender_id: user.id, 
+    //             recipient_id: selectedMatch.id
+    //         })
+    //     })
+    //     .then((r) => r.json())
+    //     .then((c) => console.log(c))
+    // }
    
     return(
         <div className='card-container'>
@@ -32,6 +104,7 @@ function MatchList({match, user, selectedConvo}) {
           <Image className='image' src={match.user_image} alt='match-image'></Image>
           </Card.Content>
           <button onClick={() => getThisMatch(match)}>View Profile</button>
+          <button onClick={() => startConvo(match)}>Chat</button>
 
       </Card>
           }
