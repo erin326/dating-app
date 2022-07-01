@@ -49,7 +49,7 @@ function ConversationList({user}) {
                         </div>
                     ))}
                 </div>
-                <MessageForm  user={user} selectedConvo={selectedConvo} />
+                <MessageForm key={uuidv4()}  user={user} selectedConvo={selectedConvo} />
             
               </>
             ) :null } 

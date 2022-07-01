@@ -2,12 +2,15 @@ import {Card, CardDescription, CardHeader, Image} from 'semantic-ui-react'
 import {useState, useEffect} from 'react';
 // import {Link} from 'react-router-dom';
 import Match from '../pages/Match';
+import {useNavigate} from 'react-router-dom'
 
 
 function MatchList({match, user, selectedConvo}) {
 
     const [showInfo, setShowInfo] = useState(false);
     const [selectedMatch, setSelectedMatch] = useState({});
+
+    const navigate = useNavigate();
     
     function getThisMatch(matchObj) {
         setShowInfo(true)
@@ -54,8 +57,7 @@ function MatchList({match, user, selectedConvo}) {
 
     //     }
           function startConvo(match) {
-           console.log(user.conversation);
-            if(!selectedConvo) {
+           
                 fetch(`api/conversations`, {
                     method: "POST",
                     headers: {
@@ -66,9 +68,10 @@ function MatchList({match, user, selectedConvo}) {
                         recipient_id: match.id
                     })
                 })
-                .then((r) => r.json())
-                .then((c) => console.log(c))
-            }
+            
+                 navigate('/convos')
+                    
+                
    
   
       }

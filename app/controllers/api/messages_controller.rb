@@ -6,6 +6,7 @@ class Api::MessagesController < ApplicationController
         conversation = Conversation.find(params[:conversation_id])
         
         ConversationsChannel.broadcast_to(conversation, {type: 'new_message', new_message: message})
+        messages = conversation.messages.order(:created_at)
         render json: message
      
     end

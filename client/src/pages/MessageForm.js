@@ -7,11 +7,13 @@ function MessageForm({user, selectedConvo }) {
 
     const [messageBody, setMessageBody] = useState('');
     const [messages, setMessages] = useState([]);
+    const [isVisible, setIsVisible] = useState(true);
     
 
  
     function handleSend(e) {
         e.preventDefault();
+
         fetch(`api/conversations/${selectedConvo.id}/messages`, {
             method: "POST",
             headers: {
@@ -25,9 +27,69 @@ function MessageForm({user, selectedConvo }) {
         }); 
         setMessageBody('');
     }
+    // function sendMessage() {
+    //     if(selectedConvo) {
+            
+    //         const socket = new WebSocket(
+    //             "ws://localhost:3000/cable"
+    //             // "wss://lets-find-love.herokuapp.com/cable"
+    //             )
+           
+    //         socket.addEventListener("open", (event) => {
+    //             const message = {
+    //                 command: "subscribe",
+    //                 identifier: JSON.stringify({
+    //                     channel: "ConversationsChannel",
+    //                     conversation_id: selectedConvo.id
+    //                 })
+    //             }
+    //             socket.send(JSON.stringify(message));
+    //         });
+            
+    //         socket.addEventListener("message", (event) => {
+    //             const data = JSON.parse(event.data);
+    //             if(data.type === "ping") return;
+    //             if(!data.message)return;
+    //             if(data.message.type === 'all_messages') { 
+    //                 setMessages(data.message.messages);
+    //                 console.log('all');
+    //             }
+    //             if(data.message.type === 'new_message') {
+    //                 setMessages((currentMessages) => [
+    //                     data.message.new_message,
+    //                     ...currentMessages
+    //                 ])
+    //                 console.log(data.message.new_message);
+    //                 console.log(
+    //                     'new message'
+    //                 );
+    //             }
+    //          });
+    //          console.log('message sent');
+    //     }
 
+    // }
+
+    const seen = new Set();
+    const uniqueData = messages.filter(( sid ) => {
+        console.log(sid);
+    if (seen.has(sid)) {
+        return false;
+    }
+    seen.add(sid);
+    return true;
+    });
     useEffect(() => {
+        // let cancel = false;
+        // sendMessage().then(()=> {
+        //     if(cancel) return;
+        //     setIsVisible(false)
+        // });
+        // return () => {
+        //     cancel = true;
+        // }
         if(selectedConvo) {
+           
             const socket = new WebSocket(
                 "ws://localhost:3000/cable"
                 // "wss://lets-find-love.herokuapp.com/cable"
@@ -46,29 +108,46 @@ function MessageForm({user, selectedConvo }) {
             
             socket.addEventListener("message", (event) => {
                 const data = JSON.parse(event.data);
+          
                 if(data.type === "ping") return;
                 if(!data.message)return;
                 if(data.message.type === 'all_messages') { 
                     setMessages(data.message.messages);
+                    console.log('all');
                 }
                 if(data.message.type === 'new_message') {
+                    console.log(data);
+
                     setMessages((currentMessages) => [
                         data.message.new_message,
                         ...currentMessages
                     ])
                     console.log(data.message.new_message);
+                    console.log(
+                        'new message'
+                    );
                 }
              });
+             console.log('message sent');
+           
         }
+        
     }, [selectedConvo]);
+
+    // useEffect(() => {
+    //     let cancel = false;
+
+    // },[])
  
-    const displayMessage = messages.map((message) => (
+    const displayMessage = uniqueData.map((message) => (
       
         <Message  key={message.id} message={message} body={message.body}  user={user} selectedConvo={selectedConvo} createdAt={message.created_at} />
         
           ))
           const sorted = displayMessage.slice().sort((a, b) => b.key - a.key)
         //   console.log(sorted);
+
+        
      
     return(
         
@@ -82,7 +161,7 @@ function MessageForm({user, selectedConvo }) {
                     <input value={messageBody} onChange={(e) => setMessageBody(e.target.value)} placeholder="Type your message here"></input>
                     <button type='submit'>Send</button>
                 </form>
-                {displayMessage}
+                {sorted}
             </div>
         :null}
         </>

@@ -19,7 +19,7 @@ function App({}) {
     const [userLatitude, setUserLatitude] = useState([]);
     const [userLongitude, setUserLongitude] = useState([]);
 
-    const [genderInterest, setGenderInterest] = useState('Any');
+    const [genderInterest, setGenderInterest] = useState('Any/All');
     const [alreadySwiped, setAlreadySwiped] = useState([]);
 
     // console.log(user.likes, 'likes');

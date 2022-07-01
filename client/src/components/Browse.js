@@ -26,41 +26,42 @@ function Browse({user, alreadySwiped, setAlreadySwiped}) {
       };
 
     const filteredUsers = allUsers.filter((thisUser) => {
+        console.log(thisUser);
         // console.log(thisUser.gender_interest.includes('Men'));
        
-        if(user.gender_interest === 'Any' && user.gender === 'female') {
+        if(user.gender_interest === 'Any/All' && user.gender === 'female') {
             console.log(thisUser);
-            return thisUser.gender_interest === 'Any' || thisUser.gender_interest === 'Women'
-        } else if(user.gender_interest === 'Any' && user.gender === 'male') {
-            return thisUser.gender_interest === 'Any' || thisUser.gender_interest === 'Men'
+            return thisUser.gender_interest === 'Any/All' || thisUser.gender_interest === 'Women'
+        } else if(user.gender_interest === 'Any/All' && user.gender === 'male') {
+            return thisUser.gender_interest === 'Any/All' || thisUser.gender_interest === 'Men'
         } else if(user.gender_interest === 'Men' && user.gender === 'female') {
-            return thisUser.gender === 'male' && (thisUser.gender_interest === 'Women' || thisUser.gender_interest === 'Any') 
+            return thisUser.gender === 'male' && (thisUser.gender_interest === 'Women' || thisUser.gender_interest === 'Any/All') 
             // return men
         } else if(user.gender_interest === 'Men' && user.gender === 'male' ) {
             return thisUser.gender === 'male' && thisUser.gender_interest === 'Men'
             // return women 
         } else if(user.gender_interest === 'Women' && user.gender === 'male') {
-            return thisUser.gender === 'female' && (thisUser.gender_interest === 'Men' || thisUser.genderInterest === 'Any')
+            return thisUser.gender === 'female' && (thisUser.gender_interest === 'Men' || thisUser.genderInterest === 'Any/All')
         }else if(user.gender_interest === 'Women' && user.gender === 'female') {
             return thisUser.gender === 'female' && (thisUser.gender_interest === 'Women' || thisUser.gender_interest === 'Any/All')
         }
     })  
-    // console.log(filteredUsers);
+    console.log(filteredUsers);
 
     
 
-    const displayUsers = filteredUsers.map((thisUser) =>  {
-        if (alreadySwiped.includes(thisUser.id)) {
-            return null
-        }else {
-            return (
+    const displayUsers = filteredUsers.map((thisUser) =>  (
+        // if (alreadySwiped.includes(thisUser.id)) {
+        //     return null
+        // }else {
+            // return (
                 <BrowseCard key={thisUser.id} user={user} otherUser={thisUser} 
                 slideRight={slideRight} alreadySwiped={alreadySwiped} setAlreadySwiped={setAlreadySwiped}
                 />
-            )
-        }
+        //     )
+        // }
         
-    })
+    ))
     
     
     return(
