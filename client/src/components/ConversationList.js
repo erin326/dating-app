@@ -28,17 +28,18 @@ function ConversationList({user}) {
     // }
     
     return(
-
-        <article className='sidebar'>
+        <div>
+        <article className='convos'>
             {convos.length > 0 ? (
                 <><div>
                     {convos.map((convo) => (
                         
-                        <div key={convo.id}>
+                        <div className='side' key={convo.id}>
                       
 
                         {/* {user.id !== convo.recipient.id ? */}
-                         <button key={convo.id} onClick={() => setSelectedConvo(convo)}> 
+                         <button
+                         className='sidebar' key={convo.id} onClick={() => setSelectedConvo(convo)}> 
                          {user.id === convo.sender.id ? convo.recipient.username : convo.sender.username}
                        {/* {convo.recipient.username}
                        {convo.sender.username} */}
@@ -49,12 +50,21 @@ function ConversationList({user}) {
                         </div>
                     ))}
                 </div>
-                <MessageForm key={uuidv4()}  user={user} selectedConvo={selectedConvo} />
+                <div >
+           
+
+                </div>
+                
+               
             
               </>
             ) :null } 
+             
  
         </article>
+        <MessageForm key={uuidv4()}  user={user} selectedConvo={selectedConvo} />
+        </div>
+
     )
 }
 

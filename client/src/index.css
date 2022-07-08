@@ -22,19 +22,95 @@ code {
   border: none; */
   float: left;
   color:black;
-  font-size: 70px;
+  font-size: 40px;
   /* background-color:rgb(232, 122, 190); */
   /* padding:13px; */
 }
-.sidebar {
+/* .sidebar {
   float:left;
-  }
+  } */
   
-  .sidebar div {
+  /* .sidebar div {
   padding: 8px;
   font-size: 24px;
   display: block;
   margin: 10px;
+  background: #0048AA;
+  border-radius: 10px 0 0 10px;
+  width: 275px;
+  min-width: 800px;
+  max-width: 1000px;
+  max-height: 800px;
+  height: 95vh;
+  } */
+
+  
+  .sidebar {
+    padding: 8px;
+    font-size: 24px;
+    display: block;
+    margin-top: 10px;
+ 
+    border: none;
+    width: 150px;
+ 
+    
+    }
+    /* .sidebar button {
+      padding: 40px;
+    } */
+
+    /* .side {
+      height: 100%;
+      width: 150px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      padding-top: 40px;
+      background-color: lightblue;
+      float: left;
+      } */
+      
+  .messages {
+ 
+    padding-top: 30px;
+    margin-top: 100px;
+    margin-left:170px;
+    /* background-color: aquamarine; */
+  }
+  .sidebar:focus {
+    background-color: rgb(212, 144, 156);
+  }
+  
+    
+  .convos {
+    
+    /* font-size: 24px;
+    display: block;
+    margin-top: 100px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 30px; */
+    height: 100%;
+    width: 150px;
+    position: fixed;
+    margin-top:0;
+    left: 0;
+    padding-top: 40px;
+    background-color: #BBC0C7;
+
+    /* max-height: 40%; */
+   
+    /* background: #999; */
+    /* width: 100%;
+    height: 100%;             */
+    /* position: absolute; */
+    /* top: 300;
+    left: 0 */
+    border-radius: .4em;
+   
+
+
   }
 
   .edit{
@@ -86,12 +162,44 @@ code {
   
 } */
 
-.message-container {
-  width: 100%;
-  display: flex;
-  /* flex-direction: column-reverse; */
+/* .message-container {
+  top:200px;
 
-}
+} */
+
+.left-chat-bubble{
+  padding: 8px 15px 8px 13px;
+  margin: 0 0 25px 35px;
+  float: left;
+  max-width: 82%;
+  background: #f2f2f2;
+  border-radius: 10px;
+  min-width: 20%;
+  position: relative; box-sizing: border-box;
+  box-shadow: 7px 10px 6px -5px #BBC0C7;
+ }
+
+ .right-chat-bubble{
+  float: right;
+  margin-right: 35px;
+  width: auto;
+  background: #D5DBFF;
+  margin-left: 0px;
+  padding: 8px 15px 8px 13px;
+  border-radius: 10px;
+ }
+
+ #form {
+  padding: 20px;
+  background-color: #BBC0C7;
+  text-align: center;
+  border-radius: .4em;
+  margin:20px;
+
+
+ }
+
+
 .nav-bar{
   float: right;
 }
