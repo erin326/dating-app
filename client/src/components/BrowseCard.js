@@ -73,8 +73,8 @@ function BrowseCard({otherUser, slideRight, user, alreadySwiped, setAlreadySwipe
         };
 
     return(
-        <>
-              <Card className='browse-card'>
+        <div className='center-card'>
+              <Card >
                 <Card.Content>
                     <Card.Header>{otherUser.username}</Card.Header>
                     <Image src={otherUser.user_image} alt='my-pic'></Image>
@@ -96,7 +96,7 @@ function BrowseCard({otherUser, slideRight, user, alreadySwiped, setAlreadySwipe
             {/* {errors ? errors.map((err) => (<p>{err}</p>)) 
           : null} */}
            
-        </>
+        </div>
     )
 }
 

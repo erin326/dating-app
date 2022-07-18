@@ -7,7 +7,7 @@ function UserHomePage({user, genderInterest}) {
     
 
     return (
-        <div className='my-card'>
+        <div className='center-card'>
             <Card >
                 <Card.Content className='card-content'>
                     <Card.Header>{user.username}</Card.Header>
