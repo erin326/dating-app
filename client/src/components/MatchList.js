@@ -12,14 +12,14 @@ function MatchList({match, user, selectedConvo}) {
 
     const navigate = useNavigate();
     
-    function getThisMatch(matchObj) {
-        setShowInfo(true)
-        fetch(`api/match/${matchObj.id}`)
-        .then((r) => r.json())
-        .then((m) => {
-            setSelectedMatch(m)
+    // function getThisMatch(matchObj) {
+    //     setShowInfo(true)
+    //     fetch(`api/match/${matchObj.id}`)
+    //     .then((r) => r.json())
+    //     .then((m) => {
+    //         setSelectedMatch(m)
            
-        })
+    //     })
         
         
         // if (selectedMatch) {
@@ -38,7 +38,7 @@ function MatchList({match, user, selectedConvo}) {
         //     .then((c) => console.log(c))
 
         // }
-    }
+   
     console.log(selectedConvo);
     //    if (selectedMatch) {
     //         console.log(selectedMatch);
@@ -70,9 +70,6 @@ function MatchList({match, user, selectedConvo}) {
                 })
             
                  navigate('/convos')
-                    
-                
-   
   
       }
 
@@ -96,24 +93,32 @@ function MatchList({match, user, selectedConvo}) {
     return(
         <div className='card-container'>
 
-        {showInfo ?  <Match  selectedConvo={selectedConvo} user={user} selectedMatch={selectedMatch}
-          /> : 
-          <Card className='match-list'>
+        {/* {showInfo ?  <Match  selectedConvo={selectedConvo} user={user} selectedMatch={selectedMatch}
+          /> :  */}
+          <Card className='card'>
           <Card.Header><strong>{match.username}</strong>
           <br></br>
           {match.age}
           </Card.Header>
-          <Card.Content>
+          <Card.Content className='card-content'>
           <Image className='image' src={match.user_image} alt='match-image'></Image>
           </Card.Content>
-          <button onClick={() => getThisMatch(match)}>View Profile</button>
+          <Card.Meta>{match.gender}
+                <br></br>
+                {match.gender_interest}
+                </Card.Meta>
+                <Card.Description>
+                {match.bio}
+                </Card.Description>
+          {/* <button onClick={() => getThisMatch(match)}>View Profile</button> */}
           <button onClick={() => startConvo(match)}>Chat</button>
 
       </Card>
-          }
+          {/* } */}
      
         </div>
     )
+        
 }
 
 export default MatchList; 

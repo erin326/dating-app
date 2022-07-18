@@ -65,7 +65,7 @@ function Browse({user, alreadySwiped, setAlreadySwiped}) {
     
     
     return(
-        <>
+        <div className='card-container'>
      {   displayUsers.length > 0 ? (
             <div>
             {displayUsers[index]}
@@ -73,7 +73,7 @@ function Browse({user, alreadySwiped, setAlreadySwiped}) {
         )
         : null}
         {/* <Filter allUsers={allUsers} user={user}/> */}
-        </>
+        </div>
     )
     
 }

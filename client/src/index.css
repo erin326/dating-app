@@ -20,7 +20,7 @@ code {
 .title {
   /* border-radius: 25px;
   border: none; */
-  float: left;
+  text-align: center;
   color:black;
   font-size: 40px;
   /* background-color:rgb(232, 122, 190); */
@@ -133,6 +133,7 @@ code {
 
   #login-title {
     font-size: 70px;
+    text-align: center;
 
   }
 /* #user-messages 
@@ -211,29 +212,96 @@ code {
   padding: 50px;
   
 } */
-.card-container {
+ .card {
+  /* text-align: center; */
+  /* width: 900px;
+  height:800px; */
+  /* float: left; */
   text-align: center;
+  /* margin:35px;
+  margin-top: 5px; */
+  float: left;
+  /* min-height: 600px;
+  min-width: 500px; */
+  /* max-width: 500px;
+  max-height:800px; */
+  width: fit-content;
+  height: fit-content;
+  padding: 30px;
+  background-color:#73AD21;
+  /* border-radius: 25px;
+  border: solid 0.3em;
+  border-color:yellow;
+  border-width: 10px; */
 }
-
-.card {
- margin-top: 100;
-  
-  padding: 100px;
-  float:left;
+ /* .card-content {
   width: 800px;
+  height: 800px;
+ } */
+
+ /* .card {
+  width: 800px;
+  height: 800px;
+  background-color: blue;
+ } */
+
+/* .browse-card {
+    display: block;
+    align-items: center;
+    justify-content: center;
+  
+} */
+/* .card { */
+  /* text-align: center;
+  margin:35px;
+  margin-top: 5px;
+  float: left;
+  width: fit-content;
+  height: fit-content;
+  font-size: 30px;
+  background-color:#73AD21;
+  border-radius: 25px;
+  border: solid 0.3em;
+  border-color:yellow;
+  border-width: 10px; */
+  /* width: 100%;
+  position: absolute;
+  top:0;
+  left:0;
+  height: 100%;
+  display: flex;
+  background: #666; */
+  /* transform-origin: 50% 99%; */
+  /* position: absolute;
+  margin-top: 200px;
+  margin-left: 70px; */
+  /* display: block;
+  align-items: center;
+  justify-content: center; */
+  
+  /* padding: 60px; */
+  /* float:left; */
+  /* width: 800px;
   height: 600px;
-  font-size: 20px;
-  padding: auto;
+  font-size: 20px; */
+  /* padding: auto; */
   /* background-color:#8cadc9;
   border-radius: 25px;
   border: solid 0.3em; */
   /* border-color:rgb(0, 255, 55); */
-  border-width: 10px;
+  /* border-width: 10px; */
 
+/* } */
+
+.my-card{
+  margin-left: 600px;
 }
 .image {
-  max-width: 460px;
-  max-height: 460px;
+  
+  width: 500px;
+  height:500px;
+  object-fit:cover;
+
   
   position: relative;
   border: solid 0.3em;

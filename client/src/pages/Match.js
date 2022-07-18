@@ -21,7 +21,7 @@ function Match({user, selectedMatch}) {
     //   }, [selectedMatch])
 
     return(
-        <div className='card-container'>
+        <div >
         <Card className='card'>
         
           <Card.Header><strong>{selectedMatch.username}</strong>

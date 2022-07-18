@@ -74,7 +74,7 @@ function BrowseCard({otherUser, slideRight, user, alreadySwiped, setAlreadySwipe
 
     return(
         <>
-              <Card className='card'>
+              <Card className='browse-card'>
                 <Card.Content>
                     <Card.Header>{otherUser.username}</Card.Header>
                     <Image src={otherUser.user_image} alt='my-pic'></Image>

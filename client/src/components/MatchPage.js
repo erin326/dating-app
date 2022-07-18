@@ -18,9 +18,9 @@ function MatchPage({ user, selectedConvo}) {
     ))
 
     return(
-        <>
+        <div className='card-container'>
         {matches.length ? displayMatches : null}
-        </>
+        </div>
     )
 }
 
