@@ -24,17 +24,17 @@ function NavBar({user, setUser}) {
             <button id='logout-button' onClick={handleLogout}>Logout</button>
              </nav>
                  <nav>
-                    <Link to='/browse' id='browse'>Browse</Link>
+                    <Link className='nav-link' to='/browse' id='browse'>Browse</Link>
                 </nav>
                 <nav>
-                    <Link to='/matches' id='matches'>
+                    <Link className='nav-link' to='/matches' id='matches'>
                     Matches</Link>
                 </nav>
                 <nav>
-                    <Link to ='/convos' >Chats</Link>
+                    <Link className='nav-link' to ='/convos' >Chats</Link>
                 </nav>
                 <nav>
-                    <Link to='/settings' id='account-settings'>Settings</Link>
+                    <Link className='nav-link' to='/settings' id='account-settings'>Settings</Link>
                 </nav> 
                 </section>
         </div>

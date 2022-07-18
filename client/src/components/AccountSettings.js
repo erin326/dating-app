@@ -93,7 +93,7 @@ function AccountSettings({user, genderInterest, setGenderInterest,
          <select  value={genderInterest} onChange={(e)=> setGenderInterest(e.target.value)}
          placeholder="enter"> 
             <option  value="none">Please choose</option>
-            <option value="Any/All">Any/All</option>
+            <option value="Any">Any/All</option>
             <option value="Men">Men</option>
             <option value="Women">Women</option>
             

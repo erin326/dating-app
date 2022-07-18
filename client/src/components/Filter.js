@@ -1,11 +1,11 @@
-function Filter({otherUser, user}) {
+// function Filter({otherUser, user}) {
     
-  console.log(user);
-  console.log(otherUser);
-    return(
-        <>
-        </>
-    )
-}
+//   console.log(user);
+//   console.log(otherUser);
+//     return(
+//         <>
+//         </>
+//     )
+// }
 
-export default Filter;
+// export default Filter;

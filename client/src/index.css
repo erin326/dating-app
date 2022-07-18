@@ -5,8 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-   background-image: url('./css-images/art-1839006_1920.jpg');
- 
+   /* background-image: url('./css-images/art-1839006_1920.jpg');
+  */
 
   /* text-align: center; */
   /* padding-left: 15px; */
@@ -203,7 +203,17 @@ code {
 
 .nav-bar{
   float: right;
+  font-size: 20px;
+  /* display: block;
+  padding: 20px;
+  */
+  
+  padding-right: 10px;
 }
+ .nav-link {
+  padding: 10px;
+  display: block;
+ }
 
 
 /* .nav-bar :link {
@@ -212,6 +222,14 @@ code {
   padding: 50px;
   
 } */
+
+ .card-container {
+
+  max-width: 1450px;
+  margin-left: 20px;
+  margin-top: 20px;
+
+  }
  .card {
   /* text-align: center; */
   /* width: 900px;
@@ -229,12 +247,27 @@ code {
   height: fit-content;
   padding: 30px;
   background-color:#73AD21;
+  margin-left: 10px;
   /* border-radius: 25px;
   border: solid 0.3em;
   border-color:yellow;
   border-width: 10px; */
 }
- /* .card-content {
+
+#logout-button {
+  position: absolute;
+  top:10px;
+  right:12px;
+  color: white;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 25px;
+  border: none;
+  background-color: rgb(132, 123, 214);
+  width: 100px;
+  height: 40px;
+}
+ /* .card-content {`
   width: 800px;
   height: 800px;
  } */
