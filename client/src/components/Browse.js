@@ -30,7 +30,7 @@ function Browse({user, alreadySwiped, setAlreadySwiped}) {
         // console.log(thisUser.gender_interest.includes('Men'));
        
         if(user.gender_interest === 'Any' && user.gender === 'female') {
-            console.log(thisUser);
+            // console.log(thisUser);
             return thisUser.gender_interest === 'Any' || thisUser.gender_interest === 'Women'
         } else if(user.gender_interest === 'Any' && user.gender === 'male') {
             return thisUser.gender_interest === 'Any' || thisUser.gender_interest === 'Men'
@@ -65,7 +65,7 @@ function Browse({user, alreadySwiped, setAlreadySwiped}) {
     
     
     return(
-        <div className='card-container'>
+        <div>
      {   displayUsers.length > 0 ? (
             <div>
             {displayUsers[index]}

@@ -27,7 +27,7 @@ function SignUpForm({onLogin}) {
         }).then((r) => {
             if (r.ok) {
                 r.json().then((user) => onLogin(user));
-                navigate('/browse')
+                navigate('/settings')
             }else{
                 r.json().then((error) => setErrors(error.errors))
             }

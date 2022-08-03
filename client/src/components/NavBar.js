@@ -19,7 +19,7 @@ function NavBar({user, setUser}) {
          <h1 className='title'>
             <Link to='/'>Let's Find Love</Link>
             </h1>
-            <section className='nav-bar'>
+              <section className='nav-bar'>
             <nav>
             <button id='logout-button' onClick={handleLogout}>Logout</button>
              </nav>
