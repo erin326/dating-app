@@ -65,9 +65,9 @@ function Browse({user, alreadySwiped, setAlreadySwiped}) {
     
     
     return(
-        <div>
+        <div className='card-container'>
      {   displayUsers.length > 0 ? (
-            <div>
+            <div >
             {displayUsers[index]}
           </div>
         )

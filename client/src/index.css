@@ -21,11 +21,19 @@ code {
   /* border-radius: 25px;
   border: none; */
   text-align: center;
-  color:black;
-  font-size: 40px;
+  color:rgb(132, 123, 214);
+  font-size: 70px;
   /* background-color:rgb(232, 122, 190); */
   /* padding:13px; */
 }
+.title :visited {
+  color:rgb(132, 123, 214);
+}
+
+.title :link {
+  text-decoration: none;
+}
+
 /* .sidebar {
   float:left;
   } */
