@@ -73,7 +73,7 @@ function BrowseCard({otherUser, slideRight, user, alreadySwiped, setAlreadySwipe
         };
 
     return(
-        <div >
+        <div className='card-container'>
               <Card className='card' >
                 <Card.Content>
                     <Card.Header>{otherUser.username}</Card.Header>

@@ -7,9 +7,9 @@ function UserHomePage({user, genderInterest}) {
     
 
     return (
-        <div className='card-container'>
-            <Card className='card'>
-                <Card.Content >
+        <div className='card'>
+            <Card >
+                <Card.Content className='card-content'>
                     <Card.Header>{user.username}</Card.Header>
                     <Image className='image' src={userImage} alt='Add a pic!'></Image>
                     <Card.Description>{user.age}</Card.Description>
