@@ -5,17 +5,25 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-   /* background-image: url('./css-images/art-1839006_1920.jpg');
-  */
+  /* background-color: rgb(190, 144, 213); */
+   
 
   /* text-align: center; */
   /* padding-left: 15px; */
+ 
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+/* 
+.login-page {
+  background-color:#e9cdf0;
+
+
+
+} */
 
 .title {
   /* border-radius: 25px;

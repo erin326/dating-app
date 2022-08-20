@@ -29,21 +29,21 @@ function Browse({user, alreadySwiped, setAlreadySwiped}) {
         console.log(thisUser);
         // console.log(thisUser.gender_interest.includes('Men'));
        
-        if(user.gender_interest === 'Any' && user.gender === 'female') {
+        if(user.gender_interest === 'Any/All' && user.gender === 'female') {
             // console.log(thisUser);
-            return thisUser.gender_interest === 'Any' || thisUser.gender_interest === 'Women'
-        } else if(user.gender_interest === 'Any' && user.gender === 'male') {
-            return thisUser.gender_interest === 'Any' || thisUser.gender_interest === 'Men'
+            return thisUser.gender_interest === 'Any/All' || thisUser.gender_interest === 'Women'
+        } else if(user.gender_interest === 'Any/All' && user.gender === 'male') {
+            return thisUser.gender_interest === 'Any/All' || thisUser.gender_interest === 'Men'
         } else if(user.gender_interest === 'Men' && user.gender === 'female') {
-            return thisUser.gender === 'male' && (thisUser.gender_interest === 'Women' || thisUser.gender_interest === 'Any') 
+            return thisUser.gender === 'male' && (thisUser.gender_interest === 'Women' || thisUser.gender_interest === 'Any/All') 
             // return men
         } else if(user.gender_interest === 'Men' && user.gender === 'male' ) {
             return thisUser.gender === 'male' && thisUser.gender_interest === 'Men'
             // return women 
         } else if(user.gender_interest === 'Women' && user.gender === 'male') {
-            return thisUser.gender === 'female' && (thisUser.gender_interest === 'Men' || thisUser.genderInterest === 'Any')
+            return thisUser.gender === 'female' && (thisUser.gender_interest === 'Men' || thisUser.genderInterest === 'Any/All')
         }else if(user.gender_interest === 'Women' && user.gender === 'female') {
-            return thisUser.gender === 'female' && (thisUser.gender_interest === 'Women' || thisUser.gender_interest === 'Any')
+            return thisUser.gender === 'female' && (thisUser.gender_interest === 'Women' || thisUser.gender_interest === 'Any/All')
         }
     })  
     console.log(filteredUsers);
@@ -65,13 +65,13 @@ function Browse({user, alreadySwiped, setAlreadySwiped}) {
     
     
     return(
-        <div>
+        <div >
      {   displayUsers.length > 0 ? (
-            <div>
+            <div >
             {displayUsers[index]}
           </div>
         )
-        : null}
+        : <p style={{textAlign: 'center', position: 'absolute', top: '300px', left: '150px', fontSize: '25px'}}>Looks like you've swiped through all of our users! Change your gender interest settings or check back again later.</p>}
         {/* <Filter allUsers={allUsers} user={user}/> */}
         </div>
     )

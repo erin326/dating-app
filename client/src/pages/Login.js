@@ -14,7 +14,7 @@ function Login({onLogin}) {
 
     {showLoginForm ? (
         <>
-        <LoginForm  onLogin={onLogin}/>
+        <LoginForm className='login-page' onLogin={onLogin}/>
         <h3>Don't have an account? 
             <button
             onClick={() => setShowLoginForm(false)}> Sign Up
@@ -24,7 +24,7 @@ function Login({onLogin}) {
 
     ) : (
         <>
-        <SignupForm  onLogin={onLogin}/>
+        <SignupForm className='login-page' onLogin={onLogin}/>
         <br></br>
         <p>
             Already have an account? 
