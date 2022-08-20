@@ -16,7 +16,9 @@ function ConversationList({user}) {
         fetch(`api/conversations`)
         .then((r) => r.json())
         .then((convos) => {
+            console.log(convos);
             setConvos(convos)
+            console.log(convos);
         })
     },[])
 
