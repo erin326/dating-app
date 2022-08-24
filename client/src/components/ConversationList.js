@@ -56,7 +56,7 @@ function ConversationList({user}) {
            
 
                 </div>
-                
+                <MessageForm key={uuidv4()}  user={user} selectedConvo={selectedConvo} />
                
             
               </>
@@ -64,7 +64,7 @@ function ConversationList({user}) {
              
  
         </article>
-        <MessageForm key={uuidv4()}  user={user} selectedConvo={selectedConvo} />
+  
         </div>
 
     )

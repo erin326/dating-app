@@ -1,7 +1,9 @@
 development:
   # adapter: async
   adapter: redis
-  url: redis://redistogo:6978d64f06406d62766796c7d994b960@pearlfish.redistogo.com:10190/
+  # url: redis://redistogo:6978d64f06406d62766796c7d994b960@pearlfish.redistogo.com:10190/
+
+  url:  redis://:p4ef4ce5eed16bf8984c89ae0f35eeb73c4f110de95c38bb99dd1cc1454a51528@ec2-3-89-198-72.compute-1.amazonaws.com:8339
   # "redis://localhost:6379/1"
 
 
@@ -10,5 +12,5 @@ test:
 
 production:
   adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") { "redis://redistogo:6978d64f06406d62766796c7d994b960@pearlfish.redistogo.com:10190/" } %>
+  url: <%= ENV.fetch("REDIS_URL") { " redis://:p4ef4ce5eed16bf8984c89ae0f35eeb73c4f110de95c38bb99dd1cc1454a51528@ec2-3-89-198-72.compute-1.amazonaws.com:8339" } %>
   channel_prefix: phase_4_project_guidelines_production
